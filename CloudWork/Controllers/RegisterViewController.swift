@@ -75,10 +75,10 @@ class RegisterViewController: UIViewController {
     @IBAction func registrationComplete() {
         
          if let text = self.txtEmail?.text, text.isEmpty != true {
-                   
+            
                    if Util.validate(email: text) {
                        //Email validated
-                       //self.emailSent()
+                       
                    }else{
                        //Email invalid
                        self.emailFieldIncorrectlyFilled()
@@ -90,11 +90,16 @@ class RegisterViewController: UIViewController {
         
         if self.txtPasswordOne?.text == self.txtPasswordTwo?.text {
             
-            let alert = UIAlertController(title: "Registered successfully!", message: "Confirm your email to validate the account.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Registered successfully!",
+                                          message: "Confirm your email to validate the account.",
+                                          preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Confirm",
+                                          style: .default,
+                                          handler: {actio in self.backToLogin()}))
             
-            self.present(alert, animated: true)
+            self.present(alert,
+                         animated: true)
         }else {
             
 //            let alert = UIAlertController(title: "Error!", message: "Passwords must be the same.", preferredStyle: .alert)
