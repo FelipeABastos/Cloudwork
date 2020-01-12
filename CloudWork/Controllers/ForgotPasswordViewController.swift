@@ -104,7 +104,7 @@ class ForgotPasswordViewController: UIViewController {
     private func emailFieldIsEmpty() {
         
         let alert = UIAlertController(title: "Error!",
-                                      message: "Fill the text field with an email.",
+                                      message: "Fill the text field with an email!",
                                       preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Confirm",
