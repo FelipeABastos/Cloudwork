@@ -1,0 +1,389 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		554744F423CA578A00F28BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554744F323CA578A00F28BCD /* AppDelegate.swift */; };
+		554744F623CA578A00F28BCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554744F523CA578A00F28BCD /* SceneDelegate.swift */; };
+		554744FB23CA578A00F28BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554744F923CA578A00F28BCD /* Main.storyboard */; };
+		554744FD23CA578B00F28BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554744FC23CA578B00F28BCD /* Assets.xcassets */; };
+		5547450023CA578B00F28BCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554744FE23CA578B00F28BCD /* LaunchScreen.storyboard */; };
+		5547450A23CA8B8500F28BCD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547450923CA8B8500F28BCD /* LoginViewController.swift */; };
+		5547450C23CA8DEE00F28BCD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547450B23CA8DEE00F28BCD /* RegisterViewController.swift */; };
+		5547450E23CA8DFA00F28BCD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547450D23CA8DFA00F28BCD /* ForgotPasswordViewController.swift */; };
+		55AD4DF323CB93740028562D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD4DF223CB93740028562D /* Util.swift */; };
+		55AD4DF523CBC5FC0028562D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD4DF423CBC5FC0028562D /* HomeViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		554744F023CA578A00F28BCD /* CloudWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		554744F323CA578A00F28BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		554744F523CA578A00F28BCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		554744FA23CA578A00F28BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		554744FC23CA578B00F28BCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		554744FF23CA578B00F28BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5547450123CA578B00F28BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5547450923CA8B8500F28BCD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5547450B23CA8DEE00F28BCD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		5547450D23CA8DFA00F28BCD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		55AD4DF223CB93740028562D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		55AD4DF423CBC5FC0028562D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		554744ED23CA578A00F28BCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		554744E723CA578A00F28BCD = {
+			isa = PBXGroup;
+			children = (
+				554744F223CA578A00F28BCD /* CloudWork */,
+				554744F123CA578A00F28BCD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		554744F123CA578A00F28BCD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				554744F023CA578A00F28BCD /* CloudWork.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		554744F223CA578A00F28BCD /* CloudWork */ = {
+			isa = PBXGroup;
+			children = (
+				55AD4DF923CBC6460028562D /* Application */,
+				55AD4DF823CBC6350028562D /* Views */,
+				55AD4DF723CBC62C0028562D /* Classes */,
+				55AD4DF623CBC60F0028562D /* Controllers */,
+			);
+			path = CloudWork;
+			sourceTree = "<group>";
+		};
+		55AD4DF623CBC60F0028562D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5547450923CA8B8500F28BCD /* LoginViewController.swift */,
+				55AD4DF423CBC5FC0028562D /* HomeViewController.swift */,
+				5547450D23CA8DFA00F28BCD /* ForgotPasswordViewController.swift */,
+				5547450B23CA8DEE00F28BCD /* RegisterViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		55AD4DF723CBC62C0028562D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				55AD4DF223CB93740028562D /* Util.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		55AD4DF823CBC6350028562D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				554744F923CA578A00F28BCD /* Main.storyboard */,
+				554744FE23CA578B00F28BCD /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		55AD4DF923CBC6460028562D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				554744F323CA578A00F28BCD /* AppDelegate.swift */,
+				554744F523CA578A00F28BCD /* SceneDelegate.swift */,
+				554744FC23CA578B00F28BCD /* Assets.xcassets */,
+				5547450123CA578B00F28BCD /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		554744EF23CA578A00F28BCD /* CloudWork */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5547450423CA578B00F28BCD /* Build configuration list for PBXNativeTarget "CloudWork" */;
+			buildPhases = (
+				554744EC23CA578A00F28BCD /* Sources */,
+				554744ED23CA578A00F28BCD /* Frameworks */,
+				554744EE23CA578A00F28BCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CloudWork;
+			productName = CloudWork;
+			productReference = 554744F023CA578A00F28BCD /* CloudWork.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		554744E823CA578A00F28BCD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Felipe Amorim Bastos";
+				TargetAttributes = {
+					554744EF23CA578A00F28BCD = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = 554744EB23CA578A00F28BCD /* Build configuration list for PBXProject "CloudWork" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 554744E723CA578A00F28BCD;
+			productRefGroup = 554744F123CA578A00F28BCD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				554744EF23CA578A00F28BCD /* CloudWork */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		554744EE23CA578A00F28BCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5547450023CA578B00F28BCD /* LaunchScreen.storyboard in Resources */,
+				554744FD23CA578B00F28BCD /* Assets.xcassets in Resources */,
+				554744FB23CA578A00F28BCD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		554744EC23CA578A00F28BCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554744F423CA578A00F28BCD /* AppDelegate.swift in Sources */,
+				55AD4DF323CB93740028562D /* Util.swift in Sources */,
+				5547450E23CA8DFA00F28BCD /* ForgotPasswordViewController.swift in Sources */,
+				554744F623CA578A00F28BCD /* SceneDelegate.swift in Sources */,
+				5547450A23CA8B8500F28BCD /* LoginViewController.swift in Sources */,
+				55AD4DF523CBC5FC0028562D /* HomeViewController.swift in Sources */,
+				5547450C23CA8DEE00F28BCD /* RegisterViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		554744F923CA578A00F28BCD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				554744FA23CA578A00F28BCD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		554744FE23CA578B00F28BCD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				554744FF23CA578B00F28BCD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5547450223CA578B00F28BCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5547450323CA578B00F28BCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5547450523CA578B00F28BCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CloudWork/Application/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.FelipeBastos.CloudWork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5547450623CA578B00F28BCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CloudWork/Application/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.FelipeBastos.CloudWork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		554744EB23CA578A00F28BCD /* Build configuration list for PBXProject "CloudWork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5547450223CA578B00F28BCD /* Debug */,
+				5547450323CA578B00F28BCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5547450423CA578B00F28BCD /* Build configuration list for PBXNativeTarget "CloudWork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5547450523CA578B00F28BCD /* Debug */,
+				5547450623CA578B00F28BCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 554744E823CA578A00F28BCD /* Project object */;
+}
