@@ -155,6 +155,7 @@
                         <outlet property="txtEmail" destination="fdx-q1-IRv" id="Wgb-Oc-AKN"/>
                         <outlet property="txtPassword" destination="Js0-t4-K1U" id="eJu-uU-iQD"/>
                         <outlet property="vwCloud" destination="I72-pt-zaC" id="7fB-wP-0sb"/>
+                        <outlet property="vwLogo" destination="Zxj-5c-Y6I" id="LHc-wE-SQT"/>
                         <outlet property="vwUnderlineEmail" destination="P40-b3-uHV" id="1yh-wo-QEh"/>
                         <outlet property="vwUnderlinePassword" destination="MMz-uJ-oQS" id="b5h-uM-FoB"/>
                     </connections>

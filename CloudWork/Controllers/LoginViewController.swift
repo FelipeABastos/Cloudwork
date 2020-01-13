@@ -10,6 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    var alreadyAnimatedForm: Bool = false
+    
     @IBOutlet var btnSignIn: UIButton?
     @IBOutlet var btnRegister: UIButton?
     @IBOutlet var btnForgotPassword: UIButton?
@@ -17,6 +19,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var txtEmail: UITextField?
     @IBOutlet var txtPassword: UITextField?
     
+    @IBOutlet var vwLogo: UIView?
     @IBOutlet var vwUnderlineEmail: UIView?
     @IBOutlet var vwUnderlinePassword: UIView?
     @IBOutlet var vwCloud: UIView?
@@ -35,18 +38,23 @@ class LoginViewController: UIViewController {
         if let fieldPassword = txtPassword {
             Util.tintPlaceholder(field: fieldPassword, color: .white)
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if alreadyAnimatedForm == false {
+            self.animateForms()
+            alreadyAnimatedForm = true
+        }
         
         self.animateCloud()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
+        self.showForm()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -195,6 +203,93 @@ class LoginViewController: UIViewController {
                         self?.vwCloud?.frame.size.height *= 0.90
                         self?.vwCloud?.frame.size.height *= 0.90
         }, completion: nil)
+    }
+    
+    private func animateForms() {
+        
+        self.hideForm()
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                           options: [],
+                           animations: {[weak self] in
+                            self?.vwLogo?.frame.size.height *= 1.08
+                            self?.vwLogo?.frame.size.width *= 1.08
+            }, completion: nil)
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: [],
+                       animations: {[weak self] in
+                        self?.txtEmail?.frame.size.height *= 1.08
+                        self?.txtEmail?.frame.size.width *= 1.08
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: [],
+                       animations: {[weak self] in
+                        self?.vwUnderlineEmail?.frame.size.height *= 1.08
+                        self?.vwUnderlineEmail?.frame.size.width *= 1.08
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: [],
+                       animations: {[weak self] in
+                        self?.txtPassword?.frame.size.height *= 1.08
+                        self?.txtPassword?.frame.size.width *= 1.08
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: [],
+                       animations: {[weak self] in
+                        self?.vwUnderlinePassword?.frame.size.height *= 1.08
+                        self?.vwUnderlinePassword?.frame.size.width *= 1.08
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: [],
+                       animations: {[weak self] in
+                        self?.btnSignIn?.frame.size.height *= 1.08
+                        self?.btnSignIn?.frame.size.width *= 1.08
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: [],
+                       animations: {[weak self] in
+                        self?.btnRegister?.frame.size.height *= 1.08
+                        self?.btnRegister?.frame.size.width *= 1.08
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: [],
+                       animations: {[weak self] in
+                        self?.btnForgotPassword?.frame.size.height *= 1.08
+                        self?.btnForgotPassword?.frame.size.width *= 1.08
+        }, completion: nil)
+    }
+    
+    private func showForm(){
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.vwLogo?.alpha = 1
+            self.txtEmail?.alpha = 1
+            self.vwUnderlineEmail?.alpha = 1
+            self.txtPassword?.alpha = 1
+            self.vwUnderlinePassword?.alpha = 1
+            self.btnSignIn?.alpha = 1
+            self.btnRegister?.alpha = 1
+            self.btnForgotPassword?.alpha = 1
+        })
+    }
+    
+    private func hideForm() {
+        
+        self.vwLogo?.alpha = 0
+        self.txtEmail?.alpha = 0
+        self.vwUnderlineEmail?.alpha = 0
+        self.txtPassword?.alpha = 0
+        self.vwUnderlinePassword?.alpha = 0
+        self.btnSignIn?.alpha = 0
+        self.btnRegister?.alpha = 0
+        self.btnForgotPassword?.alpha = 0
     }
     
 }

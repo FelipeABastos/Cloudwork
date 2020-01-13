@@ -39,81 +39,20 @@ class ForgotPasswordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-    //---------------------------------------------------------------------------------------------
-    //  MARK: - Animations Requirements
-    //---------------------------------------------------------------------------------------------
+        self.centerConstraints()
         
-        constraintAlignCenterInfo?.constant -= view.bounds.width
-        constraintAlignCenterEmailField?.constant -= view.bounds.width
-        constraintAlignCenterUnderlineEmail?.constant -= view.bounds.width
-        constraintAlignCenterSendButton?.constant -= view.bounds.width
-        
-        self.lblInfo?.alpha = 0
-        self.txtEmailForgotPassword?.alpha = 0
-        self.vwUnderlineForgotPassword?.alpha = 0
-        self.btnSendEmail?.alpha = 0
+        self.hideForms()
         
         self.animateCloud()
-        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-    //---------------------------------------------------------------------------------------------
-    //  MARK: - Bounce Animations
-    //---------------------------------------------------------------------------------------------
+        self.animateForms()
         
-        constraintAlignCenterInfo?.constant = 0
-        
-        UIView.animate(withDuration: 0.5) { [weak self] in
-          self?.view.layoutIfNeeded()
-        }
-        
-        constraintAlignCenterEmailField?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.2,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterUnderlineEmail?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.2,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterSendButton?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                    delay: 0.3,
-                    options: [],
-                    animations: { [weak self] in
-                     self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-    //---------------------------------------------------------------------------------------------
-    //  MARK: - Fade In Animations
-    //---------------------------------------------------------------------------------------------
-        
-        UIView.animate(withDuration: 1.5, animations: {self.lblInfo?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.txtEmailForgotPassword?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineForgotPassword?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.btnSendEmail?.alpha = 1})
-        }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        }
-    
+        self.showForms()
+    }
     
     //-----------------------------------------------------------------------
     //    MARK: Private Functions
@@ -201,5 +140,59 @@ class ForgotPasswordViewController: UIViewController {
                         self?.vwCloud?.frame.size.height *= 0.90
                         self?.vwCloud?.frame.size.height *= 0.90
         }, completion: nil)
+    }
+    
+    private func animateForms(){
+        
+        constraintAlignCenterInfo?.constant = 0
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in
+          self?.view.layoutIfNeeded()
+        }
+        
+        constraintAlignCenterEmailField?.constant = 0
+        constraintAlignCenterUnderlineEmail?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.2,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+                
+        constraintAlignCenterSendButton?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                    delay: 0.3,
+                    options: [],
+                    animations: { [weak self] in
+                     self?.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    private func hideForms(){
+        
+        self.lblInfo?.alpha = 0
+        self.txtEmailForgotPassword?.alpha = 0
+        self.vwUnderlineForgotPassword?.alpha = 0
+        self.btnSendEmail?.alpha = 0
+    }
+    
+    private func showForms(){
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.lblInfo?.alpha = 1
+            self.txtEmailForgotPassword?.alpha = 1
+            self.vwUnderlineForgotPassword?.alpha = 1
+            self.btnSendEmail?.alpha = 1
+        })
+    }
+    
+    private func centerConstraints() {
+        
+        constraintAlignCenterInfo?.constant -= view.bounds.width
+        constraintAlignCenterEmailField?.constant -= view.bounds.width
+        constraintAlignCenterUnderlineEmail?.constant -= view.bounds.width
+        constraintAlignCenterSendButton?.constant -= view.bounds.width
     }
 }

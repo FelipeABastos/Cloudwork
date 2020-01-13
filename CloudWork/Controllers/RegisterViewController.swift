@@ -66,27 +66,9 @@ class RegisterViewController: UIViewController {
     //  MARK: - Animations Requirements
     //---------------------------------------------------------------------------------------------
         
-        self.lblInfo?.alpha = 0
-        self.txtName?.alpha = 0
-        self.vwUnderlineName?.alpha = 0
-        self.txtEmail?.alpha = 0
-        self.vwUnderlineEmailRegister?.alpha = 0
-        self.txtPasswordOne?.alpha = 0
-        self.vwUnderlinePasswordOne?.alpha = 0
-        self.txtPasswordTwo?.alpha = 0
-        self.btnRegister?.alpha = 0
-        self.btnRegister?.alpha = 0
+        self.hideForms()
         
-        constraintAlignCenterInfo?.constant -= view.bounds.width
-        constraintAlignCenterName?.constant -= view.bounds.width
-        constraintAlignCenterUnderlineName?.constant -= view.bounds.width
-        constraintAlignCenterEmail?.constant -= view.bounds.width
-        constraintAlignCenterUnderlineEmail?.constant -= view.bounds.width
-        constraintAlignCenterPasswordOne?.constant -= view.bounds.width
-        constraintAlignCenterUnderlinePasswordOne?.constant -= view.bounds.width
-        constraintAlignCenterPasswordTwo?.constant -= view.bounds.width
-        constraintAlignCenterUnderlinePasswordTwo?.constant -= view.bounds.width
-        constraintAlignCenterRegisterButton?.constant -= view.bounds.width
+        self.centerConstraints()
         
         self.animateCloud()
             
@@ -95,119 +77,9 @@ class RegisterViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-    //---------------------------------------------------------------------------------------------
-    //  MARK: - Bounce Animations
-    //---------------------------------------------------------------------------------------------
-        
-        constraintAlignCenterInfo?.constant = 0
-        
-        UIView.animate(withDuration: 0.5) { [weak self] in
-          self?.view.layoutIfNeeded()
-        }
-        
-        constraintAlignCenterName?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.2,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        constraintAlignCenterUnderlineName?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.2,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterEmail?.constant = 0
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.3,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterUnderlineEmail?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.3,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterPasswordOne?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.4,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterUnderlinePasswordOne?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.4,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterPasswordTwo?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.5,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterUnderlinePasswordTwo?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.5,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        constraintAlignCenterRegisterButton?.constant = 0
-        
-        UIView.animate(withDuration: 0.5,
-                     delay: 0.6,
-                     options: [],
-                     animations: { [weak self] in
-                      self?.view.layoutIfNeeded()
-        }, completion: nil)
-       
-    //---------------------------------------------------------------------------------------------
-    //  MARK: - Fade in Animations
-    //---------------------------------------------------------------------------------------------
-        
-        UIView.animate(withDuration: 1.5, animations: {self.lblInfo?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.txtName?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineName?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.txtEmail?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineEmailRegister?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.txtPasswordOne?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlinePasswordOne?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.txtPasswordTwo?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlinePasswordTwo?.alpha = 1})
-        UIView.animate(withDuration: 1.5, animations: {self.btnRegister?.alpha = 1})
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        self.animateForms()
+
+        self.showForms()
         
     }
     
@@ -250,8 +122,8 @@ class RegisterViewController: UIViewController {
                          animated: true)
         }else {
               
-            passwordAreNotTheSame()
-            passwordAreNotTheSameAlert()
+            self.passwordAreNotTheSame()
+            self.passwordAreNotTheSameAlert()
         }
     }
     
@@ -315,10 +187,6 @@ class RegisterViewController: UIViewController {
         
     }
     
-    //---------------------------------------------------------------------------------------------
-    //  MARK: - Cloud Animation
-    //---------------------------------------------------------------------------------------------
-    
     private func animateCloud() {
     let options: UIView.AnimationOptions = [.curveEaseInOut,
                                             .repeat,
@@ -330,6 +198,106 @@ class RegisterViewController: UIViewController {
                         self?.vwCloud?.frame.size.height *= 0.90
                         self?.vwCloud?.frame.size.height *= 0.90
         }, completion: nil)
+    }
+    
+    private func hideForms(){
+        
+        self.lblInfo?.alpha = 0
+        self.txtName?.alpha = 0
+        self.vwUnderlineName?.alpha = 0
+        self.txtEmail?.alpha = 0
+        self.vwUnderlineEmailRegister?.alpha = 0
+        self.txtPasswordOne?.alpha = 0
+        self.vwUnderlinePasswordOne?.alpha = 0
+        self.txtPasswordTwo?.alpha = 0
+        self.btnRegister?.alpha = 0
+        self.btnRegister?.alpha = 0
+    }
+    
+    private func showForms(){
+        
+        UIView.animate(withDuration: 1.5, animations: {self.lblInfo?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtName?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineName?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtEmail?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineEmailRegister?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtPasswordOne?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlinePasswordOne?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtPasswordTwo?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlinePasswordTwo?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.btnRegister?.alpha = 1})
+    }
+    
+    private func animateForms(){
+        
+        constraintAlignCenterInfo?.constant = 0
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in
+          self?.view.layoutIfNeeded()
+        }
+        
+        constraintAlignCenterName?.constant = 0
+        constraintAlignCenterUnderlineName?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.2,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterEmail?.constant = 0
+        constraintAlignCenterUnderlineEmail?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.3,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+
+        constraintAlignCenterPasswordOne?.constant = 0
+        constraintAlignCenterUnderlinePasswordOne?.constant = 0
+
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.4,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterPasswordTwo?.constant = 0
+        constraintAlignCenterUnderlinePasswordTwo?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.5,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+                
+        constraintAlignCenterRegisterButton?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.6,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    private func centerConstraints(){
+       
+        constraintAlignCenterInfo?.constant -= view.bounds.width
+        constraintAlignCenterName?.constant -= view.bounds.width
+        constraintAlignCenterUnderlineName?.constant -= view.bounds.width
+        constraintAlignCenterEmail?.constant -= view.bounds.width
+        constraintAlignCenterUnderlineEmail?.constant -= view.bounds.width
+        constraintAlignCenterPasswordOne?.constant -= view.bounds.width
+        constraintAlignCenterUnderlinePasswordOne?.constant -= view.bounds.width
+        constraintAlignCenterPasswordTwo?.constant -= view.bounds.width
+        constraintAlignCenterUnderlinePasswordTwo?.constant -= view.bounds.width
+        constraintAlignCenterRegisterButton?.constant -= view.bounds.width
     }
 }
 
