@@ -19,9 +19,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="ivLogo" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Zxj-5c-Y6I">
-                                <rect key="frame" x="110" y="70" width="194" height="110"/>
+                                <rect key="frame" x="117" y="70" width="180" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="FCt-g2-RV4"/>
+                                    <constraint firstAttribute="width" constant="180" id="d92-Yp-cCO"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="edtEmail" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdx-q1-IRv">
@@ -119,11 +120,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Zxj-5c-Y6I" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2H8-yh-BAG"/>
                             <constraint firstItem="qXc-Eu-o1D" firstAttribute="top" secondItem="MMz-uJ-oQS" secondAttribute="bottom" constant="20" id="2di-y8-mMi"/>
                             <constraint firstAttribute="bottom" secondItem="I72-pt-zaC" secondAttribute="bottom" constant="-15" id="87P-z2-iFx"/>
                             <constraint firstItem="MMz-uJ-oQS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="BLa-WU-LBI"/>
                             <constraint firstItem="P40-b3-uHV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BsB-P5-LqS"/>
-                            <constraint firstItem="Zxj-5c-Y6I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="F29-1m-MGK"/>
                             <constraint firstItem="Js0-t4-K1U" firstAttribute="top" secondItem="fdx-q1-IRv" secondAttribute="bottom" constant="20" id="IXU-sd-DUw"/>
                             <constraint firstAttribute="bottom" secondItem="w10-OR-Ig3" secondAttribute="bottom" id="Lmu-vb-qYJ"/>
                             <constraint firstItem="w10-OR-Ig3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TfU-Gx-1X3"/>
@@ -144,7 +145,6 @@
                             <constraint firstItem="P40-b3-uHV" firstAttribute="top" secondItem="fdx-q1-IRv" secondAttribute="bottom" id="pxh-UL-l3j"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MMz-uJ-oQS" secondAttribute="trailing" constant="60" id="rMe-MF-NIO"/>
                             <constraint firstItem="rQv-pB-nVr" firstAttribute="top" secondItem="Ija-Jw-q9f" secondAttribute="bottom" constant="20" id="vFq-tH-7XV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zxj-5c-Y6I" secondAttribute="trailing" constant="110" id="zAa-Te-Nn5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -452,6 +452,16 @@ that you will use in login.</string>
                     </view>
                     <navigationItem key="navigationItem" id="MeV-Yx-Jd7"/>
                     <connections>
+                        <outlet property="constraintAlignCenterEmail" destination="EQp-E4-bf4" id="ABv-E9-SBB"/>
+                        <outlet property="constraintAlignCenterInfo" destination="JFs-jP-NuO" id="vj1-YK-1aQ"/>
+                        <outlet property="constraintAlignCenterName" destination="rII-bv-qzs" id="BOm-eW-LkD"/>
+                        <outlet property="constraintAlignCenterPasswordOne" destination="weO-cY-K6T" id="eEq-xo-Lt2"/>
+                        <outlet property="constraintAlignCenterPasswordTwo" destination="JLl-u9-faw" id="kSc-ne-ItH"/>
+                        <outlet property="constraintAlignCenterRegisterButton" destination="DK7-vj-xSP" id="mNk-lS-Fgq"/>
+                        <outlet property="constraintAlignCenterUnderlineEmail" destination="dAa-jD-MPc" id="9Wy-Ad-qqR"/>
+                        <outlet property="constraintAlignCenterUnderlineName" destination="6Tr-4J-UXd" id="Mgz-Xi-QH5"/>
+                        <outlet property="constraintAlignCenterUnderlinePasswordOne" destination="MBZ-Cb-6xx" id="cW5-yq-MRf"/>
+                        <outlet property="constraintAlignCenterUnderlinePasswordTwo" destination="u5T-P4-PyX" id="OdE-H7-Scc"/>
                         <outlet property="txtEmail" destination="nDJ-FX-Jak" id="LFu-pV-rfi"/>
                         <outlet property="txtName" destination="3jn-Am-QuE" id="gUl-mE-dV4"/>
                         <outlet property="txtPasswordOne" destination="01P-RB-4n1" id="kng-ae-o8P"/>

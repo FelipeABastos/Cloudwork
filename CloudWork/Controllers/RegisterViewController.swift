@@ -21,6 +21,17 @@ class RegisterViewController: UIViewController {
     @IBOutlet var vwUnderlinePasswordTwo: UIView?
     @IBOutlet var vwCloud: UIView?
     
+    @IBOutlet var constraintAlignCenterInfo: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterName: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterUnderlineName: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterEmail: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterUnderlineEmail: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterPasswordOne: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterUnderlinePasswordOne: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterPasswordTwo: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterUnderlinePasswordTwo: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterRegisterButton: NSLayoutConstraint?
+    
     //-----------------------------------------------------------------------
     //    MARK: UIViewController
     //-----------------------------------------------------------------------
@@ -47,12 +58,109 @@ class RegisterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        constraintAlignCenterInfo?.constant -= view.bounds.width
+        constraintAlignCenterName?.constant -= view.bounds.width
+        constraintAlignCenterUnderlineName?.constant -= view.bounds.width
+        constraintAlignCenterEmail?.constant -= view.bounds.width
+        constraintAlignCenterUnderlineEmail?.constant -= view.bounds.width
+        constraintAlignCenterPasswordOne?.constant -= view.bounds.width
+        constraintAlignCenterUnderlinePasswordOne?.constant -= view.bounds.width
+        constraintAlignCenterPasswordTwo?.constant -= view.bounds.width
+        constraintAlignCenterUnderlinePasswordTwo?.constant -= view.bounds.width
+        constraintAlignCenterRegisterButton?.constant -= view.bounds.width
+        
         self.animateCloud()
             
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        constraintAlignCenterInfo?.constant = 0
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in
+          self?.view.layoutIfNeeded()
+        }
+        
+        constraintAlignCenterName?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.2,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        constraintAlignCenterUnderlineName?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.2,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterEmail?.constant = 0
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.3,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterUnderlineEmail?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.3,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterPasswordOne?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.4,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterUnderlinePasswordOne?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.4,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterPasswordTwo?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.5,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterUnderlinePasswordTwo?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.5,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterRegisterButton?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.6,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
      
     }
     

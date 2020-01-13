@@ -37,12 +37,51 @@ class ForgotPasswordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        constraintAlignCenterInfo?.constant -= view.bounds.width
+        constraintAlignCenterEmailField?.constant -= view.bounds.width
+        constraintAlignCenterUnderlineEmail?.constant -= view.bounds.width
+        constraintAlignCenterSendButton?.constant -= view.bounds.width
+
+        
         self.animateCloud()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        constraintAlignCenterInfo?.constant = 0
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in
+          self?.view.layoutIfNeeded()
+        }
+        
+        constraintAlignCenterEmailField?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.2,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterUnderlineEmail?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.2,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        constraintAlignCenterSendButton?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                    delay: 0.3,
+                    options: [],
+                    animations: { [weak self] in
+                     self?.view.layoutIfNeeded()
+       }, completion: nil)
         
     }
     
