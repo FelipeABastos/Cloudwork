@@ -12,6 +12,15 @@ class ForgotPasswordViewController: UIViewController {
     
     @IBOutlet var vwUnderlineForgotPassword: UIView?
     @IBOutlet var txtEmailForgotPassword: UITextField?
+    @IBOutlet var btnSendEmail: UIButton?
+    @IBOutlet var lblTextField: UILabel?
+    
+    @IBOutlet var constraintAlignCenterInfo: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterEmailField: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterSendButton: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterUnderlineEmail: NSLayoutConstraint?
+
+    @IBOutlet var vwCloud: UIView?
     
     //-----------------------------------------------------------------------
     //    MARK: UIViewController
@@ -28,11 +37,13 @@ class ForgotPasswordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.animateCloud()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,5 +125,19 @@ class ForgotPasswordViewController: UIViewController {
         }))
         
         self.present(alert, animated: true)
+    }
+    
+    // MARK: - Animate
+    private func animateCloud() {
+    let options: UIView.AnimationOptions = [.curveEaseInOut,
+                                            .repeat,
+                                            .autoreverse]
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: options,
+                       animations: {[weak self] in
+                        self?.vwCloud?.frame.size.height *= 0.90
+                        self?.vwCloud?.frame.size.height *= 0.90
+        }, completion: nil)
     }
 }

@@ -19,6 +19,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet var vwUnderlineEmailRegister: UIView?
     @IBOutlet var vwUnderlinePasswordOne: UIView?
     @IBOutlet var vwUnderlinePasswordTwo: UIView?
+    @IBOutlet var vwCloud: UIView?
     
     //-----------------------------------------------------------------------
     //    MARK: UIViewController
@@ -46,6 +47,8 @@ class RegisterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.animateCloud()
+            
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,13 +104,7 @@ class RegisterViewController: UIViewController {
             self.present(alert,
                          animated: true)
         }else {
-            
-//            let alert = UIAlertController(title: "Error!", message: "Passwords must be the same.", preferredStyle: .alert)
-//
-//            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: nil))
-//
-//            self.present(alert, animated: true)
-            
+              
             passwordAreNotTheSame()
             passwordAreNotTheSameAlert()
         }
@@ -173,6 +170,19 @@ class RegisterViewController: UIViewController {
         
     }
     
+    // MARK: - Animate
+    private func animateCloud() {
+    let options: UIView.AnimationOptions = [.curveEaseInOut,
+                                            .repeat,
+                                            .autoreverse]
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: options,
+                       animations: {[weak self] in
+                        self?.vwCloud?.frame.size.height *= 0.90
+                        self?.vwCloud?.frame.size.height *= 0.90
+        }, completion: nil)
+    }
 }
 
 

@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var vwUnderlineEmail: UIView?
     @IBOutlet var vwUnderlinePassword: UIView?
+    @IBOutlet var vwCloud: UIView?
     
     //-----------------------------------------------------------------------
     //    MARK: UIViewController
@@ -34,11 +35,13 @@ class LoginViewController: UIViewController {
         if let fieldPassword = txtPassword {
             Util.tintPlaceholder(field: fieldPassword, color: .white)
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.animateCloud()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -175,6 +178,20 @@ class LoginViewController: UIViewController {
         
         self.present(alert, animated: true)
         
+    }
+    
+    // MARK: - Animate
+    private func animateCloud() {
+    let options: UIView.AnimationOptions = [.curveEaseInOut,
+                                            .repeat,
+                                            .autoreverse]
+        
+        UIView.animate(withDuration: 2.0, delay: 0,
+                       options: options,
+                       animations: {[weak self] in
+                        self?.vwCloud?.frame.size.height *= 0.90
+                        self?.vwCloud?.frame.size.height *= 0.90
+        }, completion: nil)
     }
     
 }
