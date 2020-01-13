@@ -60,10 +60,10 @@ class LoginViewController: UIViewController {
     }
     
     //-----------------------------------------------------------------------
-    //    MARK: Custom methods
+    //    MARK: Private Functions
     //-----------------------------------------------------------------------
     
-    @IBAction func validateLogin() {
+    @IBAction private func validateLogin() {
         
         if let login = self.validateEmail(), let password = self.validatePassword() {
             
@@ -180,7 +180,10 @@ class LoginViewController: UIViewController {
         
     }
     
-    // MARK: - Animate
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Cloud Animation
+    //---------------------------------------------------------------------------------------------
+    
     private func animateCloud() {
     let options: UIView.AnimationOptions = [.curveEaseInOut,
                                             .repeat,

@@ -10,10 +10,12 @@ import UIKit
 
 class ForgotPasswordViewController: UIViewController {
     
-    @IBOutlet var vwUnderlineForgotPassword: UIView?
     @IBOutlet var txtEmailForgotPassword: UITextField?
+    @IBOutlet var vwUnderlineForgotPassword: UIView?
+    
     @IBOutlet var btnSendEmail: UIButton?
-    @IBOutlet var lblTextField: UILabel?
+    
+    @IBOutlet var lblInfo: UILabel?
     
     @IBOutlet var constraintAlignCenterInfo: NSLayoutConstraint?
     @IBOutlet var constraintAlignCenterEmailField: NSLayoutConstraint?
@@ -37,18 +39,29 @@ class ForgotPasswordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Animations Requirements
+    //---------------------------------------------------------------------------------------------
+        
         constraintAlignCenterInfo?.constant -= view.bounds.width
         constraintAlignCenterEmailField?.constant -= view.bounds.width
         constraintAlignCenterUnderlineEmail?.constant -= view.bounds.width
         constraintAlignCenterSendButton?.constant -= view.bounds.width
-
+        
+        self.lblInfo?.alpha = 0
+        self.txtEmailForgotPassword?.alpha = 0
+        self.vwUnderlineForgotPassword?.alpha = 0
+        self.btnSendEmail?.alpha = 0
         
         self.animateCloud()
-        
-    }
+        }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Bounce Animations
+    //---------------------------------------------------------------------------------------------
         
         constraintAlignCenterInfo?.constant = 0
         
@@ -81,30 +94,37 @@ class ForgotPasswordViewController: UIViewController {
                     options: [],
                     animations: { [weak self] in
                      self?.view.layoutIfNeeded()
-       }, completion: nil)
+        }, completion: nil)
         
-    }
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Fade In Animations
+    //---------------------------------------------------------------------------------------------
+        
+        UIView.animate(withDuration: 1.5, animations: {self.lblInfo?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtEmailForgotPassword?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineForgotPassword?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.btnSendEmail?.alpha = 1})
+        }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-    }
+        }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-    }
+        }
+    
     
     //-----------------------------------------------------------------------
-    //    MARK: Custom methods
+    //    MARK: Private Functions
     //-----------------------------------------------------------------------
     
-    @IBAction func backToLogin() {
+    @IBAction private func backToLogin() {
         
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func recover(){
+    @IBAction private func recover(){
         
         if let text = self.txtEmailForgotPassword?.text, text.isEmpty != true {
             
@@ -166,7 +186,10 @@ class ForgotPasswordViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    // MARK: - Animate
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Cloud Animation
+    //---------------------------------------------------------------------------------------------
+    
     private func animateCloud() {
     let options: UIView.AnimationOptions = [.curveEaseInOut,
                                             .repeat,

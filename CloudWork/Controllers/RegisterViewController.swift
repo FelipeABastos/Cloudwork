@@ -15,6 +15,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet var txtPasswordOne: UITextField?
     @IBOutlet var txtPasswordTwo: UITextField?
     
+    @IBOutlet var lblInfo: UILabel?
+    
+    @IBOutlet var btnRegister: UIButton?
+    
     @IBOutlet var vwUnderlineName: UIView?
     @IBOutlet var vwUnderlineEmailRegister: UIView?
     @IBOutlet var vwUnderlinePasswordOne: UIView?
@@ -32,9 +36,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet var constraintAlignCenterUnderlinePasswordTwo: NSLayoutConstraint?
     @IBOutlet var constraintAlignCenterRegisterButton: NSLayoutConstraint?
     
-    //-----------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------
     //    MARK: UIViewController
-    //-----------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +62,21 @@ class RegisterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Animations Requirements
+    //---------------------------------------------------------------------------------------------
+        
+        self.lblInfo?.alpha = 0
+        self.txtName?.alpha = 0
+        self.vwUnderlineName?.alpha = 0
+        self.txtEmail?.alpha = 0
+        self.vwUnderlineEmailRegister?.alpha = 0
+        self.txtPasswordOne?.alpha = 0
+        self.vwUnderlinePasswordOne?.alpha = 0
+        self.txtPasswordTwo?.alpha = 0
+        self.btnRegister?.alpha = 0
+        self.btnRegister?.alpha = 0
+        
         constraintAlignCenterInfo?.constant -= view.bounds.width
         constraintAlignCenterName?.constant -= view.bounds.width
         constraintAlignCenterUnderlineName?.constant -= view.bounds.width
@@ -75,6 +94,10 @@ class RegisterViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Bounce Animations
+    //---------------------------------------------------------------------------------------------
         
         constraintAlignCenterInfo?.constant = 0
         
@@ -160,8 +183,22 @@ class RegisterViewController: UIViewController {
                      animations: { [weak self] in
                       self?.view.layoutIfNeeded()
         }, completion: nil)
+       
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Fade in Animations
+    //---------------------------------------------------------------------------------------------
         
-     
+        UIView.animate(withDuration: 1.5, animations: {self.lblInfo?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtName?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineName?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtEmail?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineEmailRegister?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtPasswordOne?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlinePasswordOne?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtPasswordTwo?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlinePasswordTwo?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.btnRegister?.alpha = 1})
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -174,16 +211,16 @@ class RegisterViewController: UIViewController {
         
     }
     
-    //-----------------------------------------------------------------------
-    //    MARK: Custom methods
-    //-----------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------
+    //    MARK: - Private Functions
+    //---------------------------------------------------------------------------------------------
     
-    @IBAction func backToLogin() {
+    @IBAction private func backToLogin() {
         
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func registrationComplete() {
+    @IBAction private func registrationComplete() {
         
          if let text = self.txtEmail?.text, text.isEmpty != true {
             
@@ -278,7 +315,10 @@ class RegisterViewController: UIViewController {
         
     }
     
-    // MARK: - Animate
+    //---------------------------------------------------------------------------------------------
+    //  MARK: - Cloud Animation
+    //---------------------------------------------------------------------------------------------
+    
     private func animateCloud() {
     let options: UIView.AnimationOptions = [.curveEaseInOut,
                                             .repeat,

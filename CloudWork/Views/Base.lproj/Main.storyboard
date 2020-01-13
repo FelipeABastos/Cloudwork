@@ -277,7 +277,7 @@ in your register.</string>
                         <outlet property="constraintAlignCenterInfo" destination="uLG-Vi-qyk" id="WUH-7e-Biv"/>
                         <outlet property="constraintAlignCenterSendButton" destination="6WG-NP-Z3r" id="ZrR-ll-kFn"/>
                         <outlet property="constraintAlignCenterUnderlineEmail" destination="Vvz-Sb-Ypa" id="GAD-LD-fm6"/>
-                        <outlet property="lblTextField" destination="Xpq-FU-doz" id="3Ek-34-1F1"/>
+                        <outlet property="lblInfo" destination="Xpq-FU-doz" id="mzk-Ny-BRs"/>
                         <outlet property="txtEmailForgotPassword" destination="NpJ-av-cbn" id="A51-RS-a63"/>
                         <outlet property="vwCloud" destination="yhr-iN-0f3" id="6dc-Wb-o15"/>
                         <outlet property="vwUnderlineForgotPassword" destination="syD-At-wpL" id="6LT-YT-39B"/>
@@ -452,6 +452,7 @@ that you will use in login.</string>
                     </view>
                     <navigationItem key="navigationItem" id="MeV-Yx-Jd7"/>
                     <connections>
+                        <outlet property="btnRegister" destination="0g0-gg-8uS" id="6cJ-zf-pjg"/>
                         <outlet property="constraintAlignCenterEmail" destination="EQp-E4-bf4" id="ABv-E9-SBB"/>
                         <outlet property="constraintAlignCenterInfo" destination="JFs-jP-NuO" id="vj1-YK-1aQ"/>
                         <outlet property="constraintAlignCenterName" destination="rII-bv-qzs" id="BOm-eW-LkD"/>
@@ -462,6 +463,7 @@ that you will use in login.</string>
                         <outlet property="constraintAlignCenterUnderlineName" destination="6Tr-4J-UXd" id="Mgz-Xi-QH5"/>
                         <outlet property="constraintAlignCenterUnderlinePasswordOne" destination="MBZ-Cb-6xx" id="cW5-yq-MRf"/>
                         <outlet property="constraintAlignCenterUnderlinePasswordTwo" destination="u5T-P4-PyX" id="OdE-H7-Scc"/>
+                        <outlet property="lblInfo" destination="oVD-yw-RPJ" id="AWb-JH-IZd"/>
                         <outlet property="txtEmail" destination="nDJ-FX-Jak" id="LFu-pV-rfi"/>
                         <outlet property="txtName" destination="3jn-Am-QuE" id="gUl-mE-dV4"/>
                         <outlet property="txtPasswordOne" destination="01P-RB-4n1" id="kng-ae-o8P"/>
