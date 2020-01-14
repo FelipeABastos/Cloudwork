@@ -24,6 +24,14 @@ class LoginViewController: UIViewController {
     @IBOutlet var vwUnderlinePassword: UIView?
     @IBOutlet var vwCloud: UIView?
     
+    let defaults = UserDefaults.standard
+    
+    struct Keys {
+        static let userEmail = "user_email"
+        static let userPassword = "user_password"
+        static let authenticated = "authenticated"
+    }
+    
     //-----------------------------------------------------------------------
     //    MARK: UIViewController
     //-----------------------------------------------------------------------
@@ -53,6 +61,17 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        let userAuthenticated = defaults.bool(forKey: Keys.authenticated)
+        
+        if userAuthenticated == true {
+            
+            let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeView") as! HomeViewController
+            
+            self.present(homeVC, animated: true, completion: nil)
+            
+        }else{
+        }
         
         self.showForm()
     }
@@ -112,11 +131,16 @@ class LoginViewController: UIViewController {
     
     private func makeLogin(email: String, password: String) {
         
-        if email == "teste@gmail.com" && password == "123" {
+        let storedLogin = defaults.string(forKey: Keys.userEmail)
+        let storedPassword = defaults.string(forKey: Keys.userPassword)
+        
+        if email == storedLogin && password == storedPassword {
             //Login Authenticated
             let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeView") as! HomeViewController
             
             self.present(homeVC, animated: true, completion: nil)
+            
+            stayLogged()
             
         }else{
             //Login Invalid
@@ -292,4 +316,7 @@ class LoginViewController: UIViewController {
         self.btnForgotPassword?.alpha = 0
     }
     
+    private func stayLogged (){
+        defaults.set(true, forKey: Keys.authenticated)
+    }
 }

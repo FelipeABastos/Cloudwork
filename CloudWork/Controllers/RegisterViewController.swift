@@ -36,6 +36,14 @@ class RegisterViewController: UIViewController {
     @IBOutlet var constraintAlignCenterUnderlinePasswordTwo: NSLayoutConstraint?
     @IBOutlet var constraintAlignCenterRegisterButton: NSLayoutConstraint?
     
+    let defaults = UserDefaults.standard
+    
+    struct Keys {
+        static let userEmail = "user_email"
+        static let userPassword = "user_password"
+        static let userName = "user_name"
+    }
+    
     //---------------------------------------------------------------------------------------------
     //    MARK: UIViewController
     //---------------------------------------------------------------------------------------------
@@ -58,6 +66,7 @@ class RegisterViewController: UIViewController {
             Util.tintPlaceholder(field: fieldPasswordTwo, color: .white)
         }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -99,6 +108,13 @@ class RegisterViewController: UIViewController {
                    if Util.validate(email: text) {
                        //Email validated
                        
+                        self.validatePassword()
+                    
+                    defaults.set(self.txtName?.text, forKey: Keys.userName )
+                    defaults.set(self.txtEmail?.text, forKey: Keys.userEmail)
+                    defaults.set(self.txtPasswordOne?.text, forKey: Keys.userPassword)
+                       
+                    defaults.synchronize()
                    }else{
                        //Email invalid
                        self.emailFieldIncorrectlyFilled()
@@ -108,23 +124,8 @@ class RegisterViewController: UIViewController {
                    self.emailFieldIsEmpty()
                }
         
-        if self.txtPasswordOne?.text == self.txtPasswordTwo?.text {
-            
-            let alert = UIAlertController(title: "Registered successfully!",
-                                          message: "Confirm your email to validate the account.",
-                                          preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Confirm",
-                                          style: .default,
-                                          handler: {actio in self.backToLogin()}))
-            
-            self.present(alert,
-                         animated: true)
-        }else {
-              
-            self.passwordAreNotTheSame()
-            self.passwordAreNotTheSameAlert()
-        }
+        self.validatePassword()
+        
     }
     
     private func passwordAreNotTheSame() {
@@ -298,6 +299,27 @@ class RegisterViewController: UIViewController {
         constraintAlignCenterPasswordTwo?.constant -= view.bounds.width
         constraintAlignCenterUnderlinePasswordTwo?.constant -= view.bounds.width
         constraintAlignCenterRegisterButton?.constant -= view.bounds.width
+    }
+    
+    private func validatePassword() {
+        
+        if self.txtPasswordOne?.text == self.txtPasswordTwo?.text {
+            
+            let alert = UIAlertController(title: "Registered successfully!",
+                                          message: "Confirm your email to validate the account.",
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Confirm",
+                                          style: .default,
+                                          handler: {actio in self.backToLogin()}))
+            
+            self.present(alert,
+                         animated: true)
+        }else {
+              
+            self.passwordAreNotTheSame()
+            self.passwordAreNotTheSameAlert()
+        }
     }
 }
 
