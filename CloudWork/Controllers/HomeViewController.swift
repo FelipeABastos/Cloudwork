@@ -28,7 +28,10 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        lblWelcomeMessage?.text = "Hello" + " " + defaults.string(forKey: Constants.Key.userName)!
+        if let userName = Session.get(){
+        
+            lblWelcomeMessage?.text = "Hello" + " " + userName[Constants.Key.userName]!
+        }
         
     }
     

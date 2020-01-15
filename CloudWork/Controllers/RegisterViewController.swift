@@ -98,53 +98,53 @@ class RegisterViewController: UIViewController {
     @IBAction private func registerButton() {
         
         if let text = self.txtEmail?.text, text.isEmpty != true {
+        
+                if Util.validate(email: text) { //Email validated
 
-            if Util.validate(email: text) { //Email validated
-
-                if self.validatePassword() { //Password validated
-                    
-                    if self.checkIfEmailAlreadyExists() {
+                    if self.validatePassword() { //Password validated
                         
-                        let alert = UIAlertController(title: "Error!",
-                                                  message: "The email already exists",
-                                                  preferredStyle: .alert)
+                        if self.checkIfEmailAlreadyExists() {
+                            
+                            let alert = UIAlertController(title: "Error!",
+                                                      message: "The email already exists",
+                                                      preferredStyle: .alert)
 
-                        alert.addAction(UIAlertAction(title: "Confirm",
-                                                  style: .default,
-                                                  handler: { action in
-                                                    self.txtEmail?.text = nil
-                                                    self.vwUnderlineEmailRegister?.backgroundColor = UIColor.red
+                            alert.addAction(UIAlertAction(title: "Confirm",
+                                                      style: .default,
+                                                      handler: { action in
+                                                        self.txtEmail?.text = nil
+                                                        self.vwUnderlineEmailRegister?.backgroundColor = UIColor.red
 
-                        }))
+                            }))
 
-                        self.present(alert, animated: true)
+                            self.present(alert, animated: true)
 
-                        if let fieldEmail = txtEmail {
-                            Util.tintPlaceholder(field: fieldEmail, color: .red)
+                            if let fieldEmail = txtEmail {
+                                Util.tintPlaceholder(field: fieldEmail, color: .red)
+                            }
+                        }else{
+                        
+                        // register user
+                        
+                        let user: Dictionary<String, String> = [Constants.Key.userName : (self.txtName?.text)!,
+                                                                Constants.Key.userEmail : (self.txtEmail?.text)!,
+                                                                Constants.Key.userPassword : (self.txtPasswordOne?.text)!]
+                        
+                        PersistManager.set(data: user)
+                        
+                        registrationCompleteAlert()
                         }
-                    }else{
-                    
-                    // register user
-                    
-                    let user: Dictionary<String, String> = [Constants.Key.userName : (self.txtName?.text)!,
-                                                            Constants.Key.userEmail : (self.txtEmail?.text)!,
-                                                            Constants.Key.userPassword : (self.txtPasswordOne?.text)!]
-                    
-                    PersistManager.set(data: user)
-                    
-                    registrationCompleteAlert()
                     }
+                }else{  //Email invalid
+                    
+                    self.emailFieldIncorrectlyFilled()
                 }
-            }else{ //Email invalid
                 
-                self.emailFieldIncorrectlyFilled()
+            }else{ //Field is Empty
+                
+                self.emailFieldIsEmpty()
             }
-            
-        }else{ //Field is Empty
-            
-            self.emailFieldIsEmpty()
         }
-    }
     
     private func registrationCompleteAlert() {
         
@@ -358,6 +358,15 @@ class RegisterViewController: UIViewController {
 
                 return true
             }
+        }
+        return false
+    }
+    
+    private func checkNameField() -> Bool {
+        
+        if txtName == nil {
+            
+            return true
         }
         return false
     }
