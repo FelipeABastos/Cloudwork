@@ -388,7 +388,7 @@ in your register.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="registrationComplete" destination="Ue9-Oj-zOm" eventType="touchUpInside" id="q3g-Sz-0K4"/>
+                                    <action selector="registerButton" destination="Ue9-Oj-zOm" eventType="touchUpInside" id="9Vf-Js-82m"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Jp-5w-5Sp">

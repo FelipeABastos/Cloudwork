@@ -126,7 +126,7 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     //---------------------------------------------------------------------------------------------
-    //  MARK: - Cloud Animation
+    //  MARK: - Animations
     //---------------------------------------------------------------------------------------------
     
     private func animateCloud() {

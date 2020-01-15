@@ -16,11 +16,6 @@ class HomeViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
-    struct Keys {
-        static let userName = "user_name"
-        static let authenticated = "authenticated"
-    }
-    
     //-----------------------------------------------------------------------
     //    MARK: UIViewController
     //-----------------------------------------------------------------------
@@ -33,7 +28,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        lblWelcomeMessage?.text = "Hello" + " " + defaults.string(forKey: Keys.userName)!
+        lblWelcomeMessage?.text = "Hello" + " " + defaults.string(forKey: Constants.Key.userName)!
         
     }
     
@@ -65,19 +60,13 @@ class HomeViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Yes",
                                       style: .default,
                                       handler: {action in
-                                        let backToLogin = self.storyboard?.instantiateViewController(identifier: "LoginView") as! LoginViewController
-                                        self.present(backToLogin, animated: true, completion: nil)}))
+                                        let loginVC = self.storyboard?.instantiateViewController(identifier: "LoginView") as! LoginViewController
+                                        self.present(loginVC, animated: true, completion: nil)}))
         
         alert.addAction(UIAlertAction(title: "No",
                                       style: .default,
                                       handler: nil))
         
         self.present(alert, animated: true)
-        
-        defaults.set(false, forKey: Keys.authenticated)
-        
-        defaults.synchronize()
-        
     }
-    
 }

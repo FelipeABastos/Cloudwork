@@ -38,12 +38,6 @@ class RegisterViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
-    struct Keys {
-        static let userEmail = "user_email"
-        static let userPassword = "user_password"
-        static let userName = "user_name"
-    }
-    
     //---------------------------------------------------------------------------------------------
     //    MARK: UIViewController
     //---------------------------------------------------------------------------------------------
@@ -101,31 +95,11 @@ class RegisterViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func registrationComplete() {
+    @IBAction private func registerButton() {
         
-         if let text = self.txtEmail?.text, text.isEmpty != true {
+        checkIfEmailAlreadyExists()
             
-                   if Util.validate(email: text) {
-                       //Email validated
-                       
-                        self.validatePassword()
-                    
-                    defaults.set(self.txtName?.text, forKey: Keys.userName )
-                    defaults.set(self.txtEmail?.text, forKey: Keys.userEmail)
-                    defaults.set(self.txtPasswordOne?.text, forKey: Keys.userPassword)
-                       
-                    defaults.synchronize()
-                   }else{
-                       //Email invalid
-                       self.emailFieldIncorrectlyFilled()
-                   }
-               }else{
-                   //Field is Empty
-                   self.emailFieldIsEmpty()
-               }
-        
-        self.validatePassword()
-        
+            
     }
     
     private func passwordAreNotTheSame() {
@@ -301,26 +275,96 @@ class RegisterViewController: UIViewController {
         constraintAlignCenterRegisterButton?.constant -= view.bounds.width
     }
     
-    private func validatePassword() {
+    private func validatePassword() -> Bool {
         
         if self.txtPasswordOne?.text == self.txtPasswordTwo?.text {
             
-            let alert = UIAlertController(title: "Registered successfully!",
-                                          message: "Confirm your email to validate the account.",
-                                          preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Confirm",
-                                          style: .default,
-                                          handler: {actio in self.backToLogin()}))
-            
-            self.present(alert,
-                         animated: true)
+            return true
         }else {
               
             self.passwordAreNotTheSame()
             self.passwordAreNotTheSameAlert()
+            
+            return false
         }
     }
+    
+    private func registrationCompleteAlert() {
+        
+        let alert = UIAlertController(title: "Registered successfully!",
+                                      message: "Confirm your email to validate the account.",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Confirm",
+                                      style: .default,
+                                      handler: {action in self.dismiss(animated: true, completion: nil)}))
+        
+        self.present(alert,
+                     animated: true)
+        
+    }
+    
+    private func checkIfEmailAlreadyExists() -> Bool {
+        
+        if let text = self.txtEmail?.text, text.isEmpty != true {
+
+        let array = PersistManager.get()
+        
+        for item in array {
+            
+            if item[Constants.Key.userEmail] == txtEmail?.text {
+                
+                let alert = UIAlertController(title: "Error!",
+                                              message: "The email already exists",
+                                              preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Confirm",
+                                              style: .default,
+                                              handler: { action in
+                                                self.txtEmail?.text = nil
+                                                self.vwUnderlineEmailRegister?.backgroundColor = UIColor.red
+                                                
+                }))
+                
+                self.present(alert, animated: true)
+                
+                if let fieldEmail = txtEmail {
+                    Util.tintPlaceholder(field: fieldEmail, color: .red)
+                }
+                return false
+            }else if Util.validate(email: text){ //Email validated
+                
+                        if self.validatePassword() { //Password validated
+                            
+                            // register user
+                            
+                            let user: Dictionary<String, String> = [Constants.Key.userName : (self.txtName?.text)!,
+                                                                    Constants.Key.userEmail : (self.txtEmail?.text)!,
+                                                                    Constants.Key.userPassword : (self.txtPasswordOne?.text)!]
+                            
+                            PersistManager.set(data: user)
+                            
+                            registrationCompleteAlert()
+                            
+                            return true
+                            
+                        }
+                    else{ //Email invalid
+                        
+                        self.emailFieldIncorrectlyFilled()
+                            
+                            return false
+                    }
+                    
+                }else{ //Field is Empty
+                    
+                    self.emailFieldIsEmpty()
+                
+                return false
+                }
+            }
+        }
+    return true}
 }
 
 

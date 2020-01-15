@@ -17,6 +17,9 @@
 		5547450E23CA8DFA00F28BCD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5547450D23CA8DFA00F28BCD /* ForgotPasswordViewController.swift */; };
 		55AD4DF323CB93740028562D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD4DF223CB93740028562D /* Util.swift */; };
 		55AD4DF523CBC5FC0028562D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD4DF423CBC5FC0028562D /* HomeViewController.swift */; };
+		55D4D62423CF93BD004E1C8E /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D62323CF93BD004E1C8E /* Session.swift */; };
+		55D4D62623CF9419004E1C8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D62523CF9419004E1C8E /* Constants.swift */; };
+		55D4D62823CF950B004E1C8E /* PersistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D62723CF950B004E1C8E /* PersistManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		5547450D23CA8DFA00F28BCD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		55AD4DF223CB93740028562D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		55AD4DF423CBC5FC0028562D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		55D4D62323CF93BD004E1C8E /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		55D4D62523CF9419004E1C8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		55D4D62723CF950B004E1C8E /* PersistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,9 @@
 			isa = PBXGroup;
 			children = (
 				55AD4DF223CB93740028562D /* Util.swift */,
+				55D4D62323CF93BD004E1C8E /* Session.swift */,
+				55D4D62523CF9419004E1C8E /* Constants.swift */,
+				55D4D62723CF950B004E1C8E /* PersistManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -186,9 +195,12 @@
 				55AD4DF323CB93740028562D /* Util.swift in Sources */,
 				5547450E23CA8DFA00F28BCD /* ForgotPasswordViewController.swift in Sources */,
 				554744F623CA578A00F28BCD /* SceneDelegate.swift in Sources */,
+				55D4D62423CF93BD004E1C8E /* Session.swift in Sources */,
 				5547450A23CA8B8500F28BCD /* LoginViewController.swift in Sources */,
 				55AD4DF523CBC5FC0028562D /* HomeViewController.swift in Sources */,
 				5547450C23CA8DEE00F28BCD /* RegisterViewController.swift in Sources */,
+				55D4D62823CF950B004E1C8E /* PersistManager.swift in Sources */,
+				55D4D62623CF9419004E1C8E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

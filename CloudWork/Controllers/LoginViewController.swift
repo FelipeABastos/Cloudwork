@@ -62,29 +62,24 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let userAuthenticated = defaults.bool(forKey: Keys.authenticated)
-        
-        if userAuthenticated == true {
+        if Session.get() != nil {
             
-            let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeView") as! HomeViewController
-            
-            self.present(homeVC, animated: true, completion: nil)
+            self.showHome()
             
         }else{
+            self.showForm()
         }
         
-        self.showForm()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
+            //-----------------------------------------
+            //  Debug how many users you have
+            //-----------------------------------------
+            
+            let array = PersistManager.get()
+            for item in array {
+                print(item[Constants.Key.userEmail]!)
+            }
+            print("You have \(array.count) registered users.")
+        }
     
     //-----------------------------------------------------------------------
     //    MARK: Private Functions
@@ -131,21 +126,21 @@ class LoginViewController: UIViewController {
     
     private func makeLogin(email: String, password: String) {
         
-        let storedLogin = defaults.string(forKey: Keys.userEmail)
-        let storedPassword = defaults.string(forKey: Keys.userPassword)
+        let array = PersistManager.get()
         
-        if email == storedLogin && password == storedPassword {
-            //Login Authenticated
-            let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeView") as! HomeViewController
+        for user in array {
             
-            self.present(homeVC, animated: true, completion: nil)
-            
-            stayLogged()
-            
-        }else{
-            //Login Invalid
-            self.loginInvalid()
+            if user[Constants.Key.userEmail] == email && user[Constants.Key.userPassword] == password {
+                
+                Session.set(data: user)
+                
+                self.showHome()
+                
+                return
+            }
         }
+        
+        self.loginInvalid()
     }
     
     private func loginInvalid() {
@@ -212,8 +207,14 @@ class LoginViewController: UIViewController {
         
     }
     
+    private func showHome() {
+
+        let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeView") as! HomeViewController
+        self.present(homeVC, animated: true, completion: nil)
+    }
+    
     //---------------------------------------------------------------------------------------------
-    //  MARK: - Cloud Animation
+    //  MARK: - Animations
     //---------------------------------------------------------------------------------------------
     
     private func animateCloud() {
