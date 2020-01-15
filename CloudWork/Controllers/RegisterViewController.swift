@@ -97,11 +97,70 @@ class RegisterViewController: UIViewController {
     
     @IBAction private func registerButton() {
         
-        checkIfEmailAlreadyExists()
+        if let text = self.txtEmail?.text, text.isEmpty != true {
+
+            if Util.validate(email: text) { //Email validated
+
+                if self.validatePassword() { //Password validated
+                    
+                    if self.checkIfEmailAlreadyExists() {
+                        
+                        let alert = UIAlertController(title: "Error!",
+                                                  message: "The email already exists",
+                                                  preferredStyle: .alert)
+
+                        alert.addAction(UIAlertAction(title: "Confirm",
+                                                  style: .default,
+                                                  handler: { action in
+                                                    self.txtEmail?.text = nil
+                                                    self.vwUnderlineEmailRegister?.backgroundColor = UIColor.red
+
+                        }))
+
+                        self.present(alert, animated: true)
+
+                        if let fieldEmail = txtEmail {
+                            Util.tintPlaceholder(field: fieldEmail, color: .red)
+                        }
+                    }else{
+                    
+                    // register user
+                    
+                    let user: Dictionary<String, String> = [Constants.Key.userName : (self.txtName?.text)!,
+                                                            Constants.Key.userEmail : (self.txtEmail?.text)!,
+                                                            Constants.Key.userPassword : (self.txtPasswordOne?.text)!]
+                    
+                    PersistManager.set(data: user)
+                    
+                    registrationCompleteAlert()
+                    }
+                }
+            }else{ //Email invalid
+                
+                self.emailFieldIncorrectlyFilled()
+            }
             
+        }else{ //Field is Empty
             
+            self.emailFieldIsEmpty()
+        }
     }
     
+    private func registrationCompleteAlert() {
+        
+        let alert = UIAlertController(title: "Registered Succefully",
+                                      message: "Check your email box to confirm the account",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Confirm",
+                                      style: .default,
+                                      handler: { action in
+                                        self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true)
+    }
+
     private func passwordAreNotTheSame() {
         
         if let fieldPasswordOne = txtPasswordOne {
@@ -289,82 +348,19 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    private func registrationCompleteAlert() {
-        
-        let alert = UIAlertController(title: "Registered successfully!",
-                                      message: "Confirm your email to validate the account.",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: {action in self.dismiss(animated: true, completion: nil)}))
-        
-        self.present(alert,
-                     animated: true)
-        
-    }
-    
     private func checkIfEmailAlreadyExists() -> Bool {
-        
-        if let text = self.txtEmail?.text, text.isEmpty != true {
 
         let array = PersistManager.get()
-        
+
         for item in array {
-            
+
             if item[Constants.Key.userEmail] == txtEmail?.text {
-                
-                let alert = UIAlertController(title: "Error!",
-                                              message: "The email already exists",
-                                              preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "Confirm",
-                                              style: .default,
-                                              handler: { action in
-                                                self.txtEmail?.text = nil
-                                                self.vwUnderlineEmailRegister?.backgroundColor = UIColor.red
-                                                
-                }))
-                
-                self.present(alert, animated: true)
-                
-                if let fieldEmail = txtEmail {
-                    Util.tintPlaceholder(field: fieldEmail, color: .red)
-                }
-                return false
-            }else if Util.validate(email: text){ //Email validated
-                
-                        if self.validatePassword() { //Password validated
-                            
-                            // register user
-                            
-                            let user: Dictionary<String, String> = [Constants.Key.userName : (self.txtName?.text)!,
-                                                                    Constants.Key.userEmail : (self.txtEmail?.text)!,
-                                                                    Constants.Key.userPassword : (self.txtPasswordOne?.text)!]
-                            
-                            PersistManager.set(data: user)
-                            
-                            registrationCompleteAlert()
-                            
-                            return true
-                            
-                        }
-                    else{ //Email invalid
-                        
-                        self.emailFieldIncorrectlyFilled()
-                            
-                            return false
-                    }
-                    
-                }else{ //Field is Empty
-                    
-                    self.emailFieldIsEmpty()
-                
-                return false
-                }
+
+                return true
             }
         }
-    return true}
+        return false
+    }
 }
 
 

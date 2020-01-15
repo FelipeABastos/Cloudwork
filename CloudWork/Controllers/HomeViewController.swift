@@ -61,7 +61,9 @@ class HomeViewController: UIViewController {
                                       style: .default,
                                       handler: {action in
                                         let loginVC = self.storyboard?.instantiateViewController(identifier: "LoginView") as! LoginViewController
-                                        self.present(loginVC, animated: true, completion: nil)}))
+                                        self.present(loginVC, animated: true, completion: nil)
+                                        Session.logout()
+        }))
         
         alert.addAction(UIAlertAction(title: "No",
                                       style: .default,
