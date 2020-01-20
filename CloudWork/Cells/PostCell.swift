@@ -19,6 +19,7 @@ class PostCell: UITableViewCell {
     @IBOutlet var lblComments: UILabel?
     @IBOutlet var btnLike: UIButton?
     @IBOutlet var vwBlankView: UIView?
+    @IBOutlet var lblTwitter: UILabel?
     
     func loadUI(item: Post) {
         
@@ -27,13 +28,40 @@ class PostCell: UITableViewCell {
         self.lblTime?.text = item.time
         self.lblLikes?.text = "\(item.likes ?? 0)"
         self.lblComments?.text = "\(item.comments ?? 0)"
+        self.lblTwitter?.text = item.author.twitter
         
-        if let imageName = item.author.image {
-            self.imgAuthorPicture?.image = UIImage(named: imageName)
+        self.imgPicture?.alpha = 0
+        self.imgPicture?.image = nil
+        
+        DispatchQueue.global().async {
+            if let imageURL = item.imageURL {
+                let url:URL? = URL(string: imageURL)
+                let data:Data? = try? Data(contentsOf : url!)
+                let image = UIImage(data : data!)
+                DispatchQueue.main.async {
+                    self.imgPicture?.image = image
+                    UIView.animate(withDuration: 0.3) {
+                        self.imgPicture?.alpha = 1
+                    }
+                }
+            }
         }
         
-        if let imageName = item.image {
-            self.imgPicture?.image = UIImage(named: imageName)
+        self.imgAuthorPicture?.alpha = 0
+        self.imgAuthorPicture?.image = nil
+        
+        DispatchQueue.global().async {
+            if let imageURL = item.author.pictureURL {
+                let url:URL? = URL(string: imageURL)
+                let data:Data? = try? Data(contentsOf: url!)
+                let image = UIImage(data: data!)
+                DispatchQueue.main.async {
+                    self.imgAuthorPicture?.image = image
+                    UIView.animate(withDuration: 0.3) {
+                        self.imgAuthorPicture?.alpha = 1
+                    }
+                }
+            }
         }
     }
 }

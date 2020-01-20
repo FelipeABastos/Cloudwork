@@ -16,6 +16,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var vwCloud: UIView?
     @IBOutlet var lblWelcomeMessage: UILabel?
     
+    let apiClient = APIClient()
+    let repository = Repository(apiClient: APIClient())
     //-----------------------------------------------------------------------
     //  MARK: UIViewController
     //-----------------------------------------------------------------------
@@ -23,43 +25,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let authorOne = Author(name: "Bruno Sena", image: "avatarTwo")
+        self.tbPosts.alpha = 0
         
-        let postOne = Post(text: "Maecenas eu lorem vel est efficitur commodo eu id mauris. Morbi metus nunc, ultrices quis egestas consequat, porta a purus. Vivamus ac ligula vel lorem tempor facilisis. Donec tempor eros at ex tristique luctus. Nam tempor cursus tortor, quis cursus leo accumsan eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi bibendum, risus ut ullamcorper iaculis, est leo maximus lacus, sed congue lorem elit id mi. Mauris sem diam, semper at orci in, tristique condimentum mauris. Fusce vestibulum lorem vel diam rhoncus auctor. Nullam dapibus quis augue in suscipit.",
-                           image: nil,
-                           time: "2 minutes ago.",
-                           likes: 20,
-                           comments: 12,
-                           author: authorOne)
-        
-        let authorTwo = Author(name: "Alberto Lourenço", image: "avatarOne")
-        
-        let postTwo = Post(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id nunc id est ultrices egestas at ut tortor. Proin porta nibh vestibulum libero scelerisque lacinia. Suspendisse imperdiet ex et augue convallis fermentum.",
-                           image: "imageOne",
-                           time: "5 minutes ago.",
-                           likes: 23,
-                           comments: 18,
-                           author: authorTwo)
-        
-        let authorThree = Author(name: "Hagi", image: "avatarFour")
-        
-        let postThree = Post(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id nunc id est ultrices egestas at ut tortor. Proin porta nibh vestibulum libero scelerisque lacinia. Suspendisse imperdiet ex et augue convallis fermentum.",
-                           image: nil,
-                           time: "13 hours ago.",
-                           likes: 17,
-                           comments: 25,
-                           author: authorThree)
-        
-        let authorFour = Author(name: "Italia Amaral", image: "imageFive")
-        
-        let postFour = Post(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id nunc id est ultrices egestas at ut tortor. Proin porta nibh vestibulum libero scelerisque lacinia. Suspendisse imperdiet ex et augue convallis fermentum.",
-                           image: "ImageThree",
-                           time: "14 hours ago.",
-                           likes: 26,
-                           comments: 22,
-                           author: authorFour)
-        
-        list = [postTwo, postOne, postFour, postThree]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +42,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.tbPosts.reloadData()
+        repository.getPosts() { (result) in
+            switch result {
+            case .success(let items):
+                self.list = items
+                self.tbPosts.reloadData()
+                UIView.animate(withDuration: 0.3) {
+                    self.tbPosts.alpha = 1
+                }
+            case .failure(let error):
+                print("\(self) retrive error get posts: \(error)")
+            }
+        }
     }
     
     //-----------------------------------------------------------------------
@@ -90,14 +68,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let post: Post = list[indexPath.row]
         
-        return (post.image == nil) ? 200: 420
+        return (post.imageURL == nil) ? 200: 420
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let post: Post = list[indexPath.row]
         
-        let identifier: String = (post.image == nil) ? "PostCell_Text" : "PostCell_Image"
+        let identifier: String = (post.imageURL == nil) ? "PostCell_Text" : "PostCell_Image"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! PostCell
         cell.loadUI(item: post)

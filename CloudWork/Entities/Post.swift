@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct Post {
+struct Post: Codable {
     
     var text: String!
-    var image: String?
+    var imageURL: String?
     var time: String!
     
     var likes: Int!
@@ -19,3 +19,6 @@ struct Post {
     
     var author: Author!
 }
+
+
+

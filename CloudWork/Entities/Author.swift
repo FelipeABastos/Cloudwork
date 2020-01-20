@@ -8,9 +8,10 @@
 
 import Foundation
 
-struct Author {
+struct Author: Codable {
     
     var name: String!
-    var image: String!
+    var pictureURL: String?
+    var twitter: String?
 }
 

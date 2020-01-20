@@ -535,12 +535,6 @@ that you will use in login.</string>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCJ-KY-G9P">
-                                                            <rect key="frame" x="75" y="258" width="42" height="13.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lx6-FJ-Uvd">
                                                             <rect key="frame" x="15" y="298" width="344" height="57"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -574,26 +568,40 @@ that you will use in login.</string>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryP-S5-5rA">
+                                                            <rect key="frame" x="75" y="258" width="42" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.071841255359999995" green="0.40349714780000001" blue="0.60536755180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCJ-KY-G9P">
+                                                            <rect key="frame" x="75" y="275" width="42" height="13.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="jGP-Mt-CV9" firstAttribute="leading" secondItem="gzp-eV-cCg" secondAttribute="leading" constant="15" id="1eu-bo-3Zm"/>
                                                         <constraint firstAttribute="bottom" secondItem="lxm-bK-SK4" secondAttribute="bottom" constant="180" id="2F6-Iz-uSb"/>
+                                                        <constraint firstItem="rCJ-KY-G9P" firstAttribute="leading" secondItem="Zvf-H3-kX9" secondAttribute="trailing" constant="10" id="5p0-kM-C3o"/>
+                                                        <constraint firstItem="ryP-S5-5rA" firstAttribute="top" secondItem="uYl-65-hJv" secondAttribute="bottom" id="670-eD-hFi"/>
                                                         <constraint firstItem="Zvf-H3-kX9" firstAttribute="top" secondItem="lxm-bK-SK4" secondAttribute="bottom" constant="15" id="6MZ-za-b1V"/>
                                                         <constraint firstAttribute="trailing" secondItem="lxm-bK-SK4" secondAttribute="trailing" constant="15" id="BsF-ZP-Rin"/>
                                                         <constraint firstAttribute="bottom" secondItem="jwo-IU-kfw" secondAttribute="bottom" constant="14" id="JGD-6n-FyW"/>
                                                         <constraint firstItem="9mb-Ce-BWQ" firstAttribute="leading" secondItem="SpN-eK-zKg" secondAttribute="trailing" constant="15" id="JNx-j3-U7Y"/>
                                                         <constraint firstItem="lxm-bK-SK4" firstAttribute="leading" secondItem="gzp-eV-cCg" secondAttribute="leading" constant="15" id="R1U-Un-0sz"/>
-                                                        <constraint firstItem="rCJ-KY-G9P" firstAttribute="top" secondItem="uYl-65-hJv" secondAttribute="bottom" id="RAo-3a-3bB"/>
                                                         <constraint firstItem="uYl-65-hJv" firstAttribute="leading" secondItem="Zvf-H3-kX9" secondAttribute="trailing" constant="10" id="TGp-Vj-zfC"/>
+                                                        <constraint firstItem="ryP-S5-5rA" firstAttribute="leading" secondItem="Zvf-H3-kX9" secondAttribute="trailing" constant="10" id="WYI-iu-1r3"/>
                                                         <constraint firstItem="lx6-FJ-Uvd" firstAttribute="top" secondItem="Zvf-H3-kX9" secondAttribute="bottom" constant="12" id="b30-3P-2hB"/>
                                                         <constraint firstItem="uYl-65-hJv" firstAttribute="top" secondItem="lxm-bK-SK4" secondAttribute="bottom" constant="16" id="dGI-DT-bmw"/>
                                                         <constraint firstItem="jwo-IU-kfw" firstAttribute="leading" secondItem="9mb-Ce-BWQ" secondAttribute="trailing" constant="4" id="eJP-MP-Ey6"/>
                                                         <constraint firstAttribute="bottom" secondItem="SpN-eK-zKg" secondAttribute="bottom" constant="14" id="gOH-05-djo"/>
+                                                        <constraint firstItem="rCJ-KY-G9P" firstAttribute="top" secondItem="ryP-S5-5rA" secondAttribute="bottom" id="h4h-8y-dhq"/>
                                                         <constraint firstItem="lxm-bK-SK4" firstAttribute="top" secondItem="gzp-eV-cCg" secondAttribute="top" constant="15" id="jGw-hF-Q3j"/>
                                                         <constraint firstAttribute="bottom" secondItem="jGP-Mt-CV9" secondAttribute="bottom" constant="15" id="k6x-ES-K4g"/>
                                                         <constraint firstItem="lx6-FJ-Uvd" firstAttribute="leading" secondItem="gzp-eV-cCg" secondAttribute="leading" constant="15" id="kuw-Q4-nt0"/>
-                                                        <constraint firstItem="rCJ-KY-G9P" firstAttribute="leading" secondItem="Zvf-H3-kX9" secondAttribute="trailing" constant="10" id="ld2-6A-7YR"/>
                                                         <constraint firstAttribute="trailing" secondItem="lx6-FJ-Uvd" secondAttribute="trailing" constant="15" id="oWb-PG-0E4"/>
                                                         <constraint firstItem="SpN-eK-zKg" firstAttribute="leading" secondItem="jGP-Mt-CV9" secondAttribute="trailing" constant="4" id="pIa-M0-yWT"/>
                                                         <constraint firstItem="jGP-Mt-CV9" firstAttribute="top" secondItem="lx6-FJ-Uvd" secondAttribute="bottom" constant="12" id="rqG-DK-Xhp"/>
@@ -636,6 +644,7 @@ that you will use in login.</string>
                                             <outlet property="lblLikes" destination="SpN-eK-zKg" id="SeW-s9-hR2"/>
                                             <outlet property="lblText" destination="lx6-FJ-Uvd" id="eiw-0S-dy2"/>
                                             <outlet property="lblTime" destination="rCJ-KY-G9P" id="6TS-fR-yF6"/>
+                                            <outlet property="lblTwitter" destination="ryP-S5-5rA" id="aW5-Bt-Adt"/>
                                             <outlet property="vwBlankView" destination="gzp-eV-cCg" id="SBR-dI-ir0"/>
                                         </connections>
                                     </tableViewCell>
