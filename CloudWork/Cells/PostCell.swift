@@ -18,6 +18,7 @@ class PostCell: UITableViewCell {
     @IBOutlet var lblLikes: UILabel?
     @IBOutlet var lblComments: UILabel?
     @IBOutlet var btnLike: UIButton?
+    @IBOutlet var vwBlankView: UIView?
     
     func loadUI(item: Post) {
         
