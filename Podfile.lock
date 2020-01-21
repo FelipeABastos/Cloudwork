@@ -1,20 +1,24 @@
 PODS:
+  - Alamofire (4.9.1)
   - Kingfisher (4.10.1)
   - RKDropdownAlert (0.3.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.9.1)
   - Kingfisher
   - RKDropdownAlert
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Kingfisher
     - RKDropdownAlert
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   RKDropdownAlert: f4b3364c251829ad439dc666836a1f2dad26f4c7
 
-PODFILE CHECKSUM: 68e9181854769d4822ad8b33332ce3d72a6addb9
+PODFILE CHECKSUM: 3306c0405c2cd40809ddbd40a6cfd158ede801d4
 
 COCOAPODS: 1.8.4

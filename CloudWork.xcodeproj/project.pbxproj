@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,8 +23,6 @@
 		55D4D62823CF950B004E1C8E /* PersistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D62723CF950B004E1C8E /* PersistManager.swift */; };
 		55DF7B8623D256D9009E9F29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF7B8523D256D9009E9F29 /* Post.swift */; };
 		55DF7B8823D25766009E9F29 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF7B8723D25766009E9F29 /* Author.swift */; };
-		55E06D0323D62D9D0075A4A5 /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E06D0223D62D9D0075A4A5 /* APIRequestManager.swift */; };
-		55E06D0523D646910075A4A5 /* APIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E06D0423D646910075A4A5 /* APIRepository.swift */; };
 		55E90CAA23D0BE9C00C81CC5 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E90CA923D0BE9C00C81CC5 /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,8 +45,6 @@
 		55D4D62723CF950B004E1C8E /* PersistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistManager.swift; sourceTree = "<group>"; };
 		55DF7B8523D256D9009E9F29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		55DF7B8723D25766009E9F29 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
-		55E06D0223D62D9D0075A4A5 /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
-		55E06D0423D646910075A4A5 /* APIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepository.swift; sourceTree = "<group>"; };
 		55E90CA923D0BE9C00C81CC5 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		BD1584B4356FC64D95A971A5 /* Pods-CloudWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudWork.release.xcconfig"; path = "Target Support Files/Pods-CloudWork/Pods-CloudWork.release.xcconfig"; sourceTree = "<group>"; };
 		BDD40634044ACD04EC660584 /* Pods-CloudWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudWork.debug.xcconfig"; path = "Target Support Files/Pods-CloudWork/Pods-CloudWork.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,7 +68,6 @@
 				BDD40634044ACD04EC660584 /* Pods-CloudWork.debug.xcconfig */,
 				BD1584B4356FC64D95A971A5 /* Pods-CloudWork.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -125,8 +120,6 @@
 				55D4D62323CF93BD004E1C8E /* Session.swift */,
 				55D4D62523CF9419004E1C8E /* Constants.swift */,
 				55D4D62723CF950B004E1C8E /* PersistManager.swift */,
-				55E06D0423D646910075A4A5 /* APIRepository.swift */,
-				55E06D0223D62D9D0075A4A5 /* APIRequestManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -299,10 +292,8 @@
 				55D4D62423CF93BD004E1C8E /* Session.swift in Sources */,
 				5547450A23CA8B8500F28BCD /* LoginViewController.swift in Sources */,
 				55AD4DF523CBC5FC0028562D /* HomeViewController.swift in Sources */,
-				55E06D0523D646910075A4A5 /* APIRepository.swift in Sources */,
 				5547450C23CA8DEE00F28BCD /* RegisterViewController.swift in Sources */,
 				55DF7B8823D25766009E9F29 /* Author.swift in Sources */,
-				55E06D0323D62D9D0075A4A5 /* APIRequestManager.swift in Sources */,
 				55D4D62823CF950B004E1C8E /* PersistManager.swift in Sources */,
 				55E90CAA23D0BE9C00C81CC5 /* PostCell.swift in Sources */,
 				55D4D62623CF9419004E1C8E /* Constants.swift in Sources */,

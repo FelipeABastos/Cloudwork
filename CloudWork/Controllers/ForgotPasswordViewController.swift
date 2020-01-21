@@ -26,7 +26,7 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet var vwCloud: UIView?
     
     //-----------------------------------------------------------------------
-    //    MARK: UIViewController
+    //  MARK: -  UIViewController
     //-----------------------------------------------------------------------
     
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     //-----------------------------------------------------------------------
-    //    MARK: Private Functions
+    //  MARK: - Custom Methods
     //-----------------------------------------------------------------------
     
     @IBAction private func backToLogin() {
@@ -73,11 +73,13 @@ class ForgotPasswordViewController: UIViewController {
                 self.emailSent()
             }else{
                 //Email invalid
-                self.emailFieldIncorrectlyFilled()
+                Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
+                
+                self.txtEmailForgotPassword?.text = nil
             }
         }else{
             //Field is Empty
-            self.emailFieldIsEmpty()
+            Util.showMessage(text: "Fill the text field with an email!", type: .warning)
         }
     }
 
@@ -95,23 +97,7 @@ class ForgotPasswordViewController: UIViewController {
            
            self.present(alert, animated: true)
     }
-       
-    private func emailFieldIncorrectlyFilled(){
-        
-        Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
-        
-        self.txtEmailForgotPassword?.text = nil
-    }
-    
-    private func emailFieldIsEmpty() {
-        
-        Util.showMessage(text: "Fill the text field with an email!", type: .warning)
-    }
-    
-    //---------------------------------------------------------------------------------------------
-    //  MARK: - Animations
-    //---------------------------------------------------------------------------------------------
-    
+
     private func animateCloud() {
     let options: UIView.AnimationOptions = [.curveEaseInOut,
                                             .repeat,

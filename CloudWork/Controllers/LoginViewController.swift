@@ -27,14 +27,8 @@ class LoginViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
-    struct Keys {
-        static let userEmail = "user_email"
-        static let userPassword = "user_password"
-        static let authenticated = "authenticated"
-    }
-    
     //-----------------------------------------------------------------------
-    //    MARK: UIViewController
+    //  MARK: - UIViewController
     //-----------------------------------------------------------------------
 
     override func viewDidLoad() {
@@ -56,7 +50,6 @@ class LoginViewController: UIViewController {
             self.animateForms()
             alreadyAnimatedForm = true
         }
-        
         self.animateCloud()
     }
     
@@ -64,26 +57,14 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if Session.get() != nil {
-            
             self.showHome()
-            
         }else{
             self.showForm()
         }
-        
-            //-----------------------------------------
-            //  Debug how many users you have
-            //-----------------------------------------
-            
-            let array = PersistManager.get()
-            for item in array {
-                print(item[Constants.Key.userEmail]!)
-            }
-            print("You have \(array.count) registered users.")
-        }
+    }
     
     //-----------------------------------------------------------------------
-    //    MARK: Private Functions
+    //  MARK: - Private Functions
     //-----------------------------------------------------------------------
     
     @IBAction private func validateLogin() {
@@ -92,7 +73,6 @@ class LoginViewController: UIViewController {
             
             self.makeLogin(email: login, password: password)
         }
-        
     }
     
     private func validatePassword() -> String? {
@@ -101,7 +81,9 @@ class LoginViewController: UIViewController {
             //Password validated
             return textPassword
         }else{
-            self.passwordIsEmpty()
+            self.vwUnderlinePassword?.backgroundColor = UIColor.red
+            
+            Util.showMessage(text: "You need to put your password.", type: .warning)
             return nil
         }
     }
@@ -115,12 +97,12 @@ class LoginViewController: UIViewController {
                  return textEmail
             }else{
                 //Email invalid
-                self.emailFieldIncorrectlyFilled()
+                Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
                 return nil
             }
         }else{
             //Email field is empty
-            self.emailFieldIsEmpty()
+            Util.showMessage(text: "Fill the text field with an email.", type: .warning)
             return nil
         }
     }
@@ -141,35 +123,10 @@ class LoginViewController: UIViewController {
             }
         }
         
-        self.loginInvalid()
-    }
-    
-    private func loginInvalid() {
-        
         Util.showMessage(text: "Your email or password are invalid.", type: .warning)
         
         self.vwUnderlinePassword?.backgroundColor = UIColor.red
         self.vwUnderlineEmail?.backgroundColor = UIColor.red
-    }
-        
-    
-    private func emailFieldIncorrectlyFilled() {
-        
-        Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
-    }
-    
-    private func emailFieldIsEmpty() {
-        
-        Util.showMessage(text: "Fill the text field with an email.", type: .warning)
-        
-    }
-    
-    private func passwordIsEmpty() {
-        
-        self.vwUnderlinePassword?.backgroundColor = UIColor.red
-        
-        Util.showMessage(text: "You need to put your password.", type: .warning)
-        
     }
     
     private func showHome() {

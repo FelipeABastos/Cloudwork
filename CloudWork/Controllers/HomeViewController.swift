@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,10 +17,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var vwCloud: UIView?
     @IBOutlet var lblWelcomeMessage: UILabel?
     
-    let apiClient = APIClient()
-    let repository = Repository(apiClient: APIClient())
     //-----------------------------------------------------------------------
-    //  MARK: UIViewController
+    //  MARK: - UIViewController
     //-----------------------------------------------------------------------
     
     override func viewDidLoad() {
@@ -42,22 +41,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        repository.getPosts() { (result) in
-            switch result {
-            case .success(let items):
-                self.list = items
-                self.tbPosts.reloadData()
-                UIView.animate(withDuration: 0.3) {
-                    self.tbPosts.alpha = 1
+        Alamofire.request("http://albertolourenco.com.br/cloudwork/feed.php").responseJSON { response in
+            
+            if let jsonData = response.data {
+                
+                do{
+                    let items = try JSONDecoder().decode([Post].self, from: jsonData)
+                    self.list = items
+                    
+                    self.tbPosts.reloadData()
+                    UIView.animate(withDuration: 0.3) {
+                        self.tbPosts.alpha = 1
+                    }
+                }catch{
+                    print(error.localizedDescription)
                 }
-            case .failure(let error):
-                print("\(self) retrive error get posts: \(error)")
             }
         }
     }
     
     //-----------------------------------------------------------------------
-    //  MARK: UITableView Delegate / Datasource
+    //  MARK: - UITableView Delegate / Datasource
     //-----------------------------------------------------------------------
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,14 +86,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
+    //-----------------------------------------------------------------------
+    //  MARK: - Custom Methods
+    //-----------------------------------------------------------------------
     
     private func animateCloud() {
-    let options: UIView.AnimationOptions = [.curveEaseInOut,
-                                            .repeat,
-                                            .autoreverse]
+        let options: UIView.AnimationOptions = [.curveEaseInOut,
+                                                .repeat,
+                                                .autoreverse]
         
         UIView.animate(withDuration: 2.0, delay: 0,
                        options: options,

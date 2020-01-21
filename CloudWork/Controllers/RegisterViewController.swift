@@ -40,26 +40,13 @@ class RegisterViewController: UIViewController {
     let defaults = UserDefaults.standard
     
     //---------------------------------------------------------------------------------------------
-    //    MARK: UIViewController
+    //  MARK: - UIViewController
     //---------------------------------------------------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let fieldName = txtName {
-            Util.tintPlaceholder(field: fieldName, color: .white)
-        }
-        
-        if let fieldEmail = txtEmail {
-            Util.tintPlaceholder(field: fieldEmail, color: .white)
-        }
-        
-        if let fieldPasswordOne = txtPasswordOne {
-            Util.tintPlaceholder(field: fieldPasswordOne, color: .white)
-        }
-        if let fieldPasswordTwo = txtPasswordTwo {
-            Util.tintPlaceholder(field: fieldPasswordTwo, color: .white)
-        }
+        self.configUI()
     }
     
     
@@ -88,7 +75,7 @@ class RegisterViewController: UIViewController {
     }
     
     //---------------------------------------------------------------------------------------------
-    //    MARK: - Private Functions
+    //  MARK: - Private Functions
     //---------------------------------------------------------------------------------------------
     
     @IBAction private func backToLogin() {
@@ -135,28 +122,27 @@ class RegisterViewController: UIViewController {
                             
                             PersistManager.set(data: user)
                             
-                            registrationCompleteAlert()
+                            Util.showMessage(text: "Succefully registrated!", type: .success)
+                            
+                            self.dismiss(animated: true, completion: nil)
                             }
                         }
                         
                     }
                 }else{  //Email invalid
                     
-                    self.emailFieldIncorrectlyFilled()
+                    Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
+                    
+                    self.txtEmail?.text = nil
                 }
                 
             }else{ //Field is Empty
                 
-                self.emailFieldIsEmpty()
+                Util.showMessage(text: "Fill the text field with an email.", type: .warning)
+                
+                self.txtEmail?.text = nil
             }
         }
-    
-    private func registrationCompleteAlert() {
-        
-        Util.showMessage(text: "Succefully registrated!", type: .success)
-        
-        self.dismiss(animated: true, completion: nil)
-    }
 
     private func passwordAreNotTheSame() {
         
@@ -177,22 +163,6 @@ class RegisterViewController: UIViewController {
         self.txtPasswordOne?.text = nil
         self.txtPasswordTwo?.text = nil
         self.txtPasswordOne?.becomeFirstResponder()
-    }
-    
-    private func emailFieldIncorrectlyFilled(){
-        
-        Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
-        
-        self.txtEmail?.text = nil
-
-    }
-    
-    private func emailFieldIsEmpty() {
-
-        Util.showMessage(text: "Fill the text field with an email.", type: .warning)
-        
-        self.txtEmail?.text = nil
-
     }
     
     private func animateCloud() {
@@ -355,6 +325,24 @@ class RegisterViewController: UIViewController {
             return true
         }
         return false
+    }
+    
+    private func configUI() {
+        
+        if let fieldName = txtName {
+            Util.tintPlaceholder(field: fieldName, color: .white)
+        }
+        
+        if let fieldEmail = txtEmail {
+            Util.tintPlaceholder(field: fieldEmail, color: .white)
+        }
+        
+        if let fieldPasswordOne = txtPasswordOne {
+            Util.tintPlaceholder(field: fieldPasswordOne, color: .white)
+        }
+        if let fieldPasswordTwo = txtPasswordTwo {
+            Util.tintPlaceholder(field: fieldPasswordTwo, color: .white)
+        }
     }
 }
 
