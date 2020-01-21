@@ -31,7 +31,6 @@ extension URLRequest {
         self.init(url: resource.url)
         self.httpMethod = resource.method
     }
-    
 }
 
 final class APIClient {
@@ -57,5 +56,4 @@ final class APIClient {
         }
         task.resume()
     }
-    
 }

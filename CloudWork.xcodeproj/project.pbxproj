@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022FA0223EEF0AFFCEB3B6FB /* Pods_CloudWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0472C1376D8242737E22DCAE /* Pods_CloudWork.framework */; };
 		554744F423CA578A00F28BCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554744F323CA578A00F28BCD /* AppDelegate.swift */; };
 		554744F623CA578A00F28BCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554744F523CA578A00F28BCD /* SceneDelegate.swift */; };
 		554744FB23CA578A00F28BCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554744F923CA578A00F28BCD /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0472C1376D8242737E22DCAE /* Pods_CloudWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		554744F023CA578A00F28BCD /* CloudWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554744F323CA578A00F28BCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		554744F523CA578A00F28BCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +50,8 @@
 		55E06D0223D62D9D0075A4A5 /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		55E06D0423D646910075A4A5 /* APIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepository.swift; sourceTree = "<group>"; };
 		55E90CA923D0BE9C00C81CC5 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		BD1584B4356FC64D95A971A5 /* Pods-CloudWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudWork.release.xcconfig"; path = "Target Support Files/Pods-CloudWork/Pods-CloudWork.release.xcconfig"; sourceTree = "<group>"; };
+		BDD40634044ACD04EC660584 /* Pods-CloudWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudWork.debug.xcconfig"; path = "Target Support Files/Pods-CloudWork/Pods-CloudWork.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,17 +59,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				022FA0223EEF0AFFCEB3B6FB /* Pods_CloudWork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14798DFFCC0C54109B63F2BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDD40634044ACD04EC660584 /* Pods-CloudWork.debug.xcconfig */,
+				BD1584B4356FC64D95A971A5 /* Pods-CloudWork.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		554744E723CA578A00F28BCD = {
 			isa = PBXGroup;
 			children = (
 				554744F223CA578A00F28BCD /* CloudWork */,
 				554744F123CA578A00F28BCD /* Products */,
+				14798DFFCC0C54109B63F2BC /* Pods */,
+				8DE98246604EEE8AC08E709D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +126,7 @@
 				55D4D62523CF9419004E1C8E /* Constants.swift */,
 				55D4D62723CF950B004E1C8E /* PersistManager.swift */,
 				55E06D0423D646910075A4A5 /* APIRepository.swift */,
+				55E06D0223D62D9D0075A4A5 /* APIRequestManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -136,7 +154,6 @@
 		55DF7B8423D256C2009E9F29 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				55E06D0223D62D9D0075A4A5 /* APIRequestManager.swift */,
 				55DF7B8523D256D9009E9F29 /* Post.swift */,
 				55DF7B8723D25766009E9F29 /* Author.swift */,
 			);
@@ -151,6 +168,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		8DE98246604EEE8AC08E709D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0472C1376D8242737E22DCAE /* Pods_CloudWork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5547450423CA578B00F28BCD /* Build configuration list for PBXNativeTarget "CloudWork" */;
 			buildPhases = (
+				E5E99BEA5ADA3B309444BCFB /* [CP] Check Pods Manifest.lock */,
 				554744EC23CA578A00F28BCD /* Sources */,
 				554744ED23CA578A00F28BCD /* Frameworks */,
 				554744EE23CA578A00F28BCD /* Resources */,
+				7B39958130AD2C189D5C9391 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,6 +243,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B39958130AD2C189D5C9391 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CloudWork/Pods-CloudWork-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CloudWork/Pods-CloudWork-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CloudWork/Pods-CloudWork-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5E99BEA5ADA3B309444BCFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CloudWork-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		554744EC23CA578A00F28BCD /* Sources */ = {
@@ -378,6 +447,7 @@
 		};
 		5547450523CA578B00F28BCD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDD40634044ACD04EC660584 /* Pods-CloudWork.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +466,7 @@
 		};
 		5547450623CA578B00F28BCD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD1584B4356FC64D95A971A5 /* Pods-CloudWork.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

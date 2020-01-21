@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RKDropdownAlert
 
 class ForgotPasswordViewController: UIViewController {
     
@@ -97,32 +98,14 @@ class ForgotPasswordViewController: UIViewController {
        
     private func emailFieldIncorrectlyFilled(){
         
-        let alert = UIAlertController(title: "Error!",
-                                      message: "Fill the text field with a valid email.",
-                                      preferredStyle: .alert)
+        Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
         
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: { action in
-                                        self.txtEmailForgotPassword?.text = nil
-        }))
-        
-        self.present(alert, animated: true)
+        self.txtEmailForgotPassword?.text = nil
     }
     
     private func emailFieldIsEmpty() {
         
-        let alert = UIAlertController(title: "Error!",
-                                      message: "Fill the text field with an email!",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: { action in
-                                        self.txtEmailForgotPassword?.text = nil
-        }))
-        
-        self.present(alert, animated: true)
+        Util.showMessage(text: "Fill the text field with an email!", type: .warning)
     }
     
     //---------------------------------------------------------------------------------------------

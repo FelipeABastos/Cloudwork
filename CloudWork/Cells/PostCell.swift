@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PostCell: UITableViewCell {
     
@@ -30,38 +31,13 @@ class PostCell: UITableViewCell {
         self.lblComments?.text = "\(item.comments ?? 0)"
         self.lblTwitter?.text = item.author.twitter
         
-        self.imgPicture?.alpha = 0
-        self.imgPicture?.image = nil
-        
-        DispatchQueue.global().async {
-            if let imageURL = item.imageURL {
-                let url:URL? = URL(string: imageURL)
-                let data:Data? = try? Data(contentsOf : url!)
-                let image = UIImage(data : data!)
-                DispatchQueue.main.async {
-                    self.imgPicture?.image = image
-                    UIView.animate(withDuration: 0.3) {
-                        self.imgPicture?.alpha = 1
-                    }
-                }
-            }
+        if let imageURL = item.imageURL {
+            self.imgPicture?.kf.setImage(with: URL.init(string: imageURL))
         }
         
-        self.imgAuthorPicture?.alpha = 0
-        self.imgAuthorPicture?.image = nil
-        
-        DispatchQueue.global().async {
-            if let imageURL = item.author.pictureURL {
-                let url:URL? = URL(string: imageURL)
-                let data:Data? = try? Data(contentsOf: url!)
-                let image = UIImage(data: data!)
-                DispatchQueue.main.async {
-                    self.imgAuthorPicture?.image = image
-                    UIView.animate(withDuration: 0.3) {
-                        self.imgAuthorPicture?.alpha = 1
-                    }
-                }
-            }
+        if let imageURL = item.author.pictureURL {
+            self.imgAuthorPicture?.kf.setImage(with: URL.init(string: imageURL))
         }
     }
 }
+

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RKDropdownAlert
 
 class RegisterViewController: UIViewController {
     
@@ -100,40 +101,44 @@ class RegisterViewController: UIViewController {
         if let text = self.txtEmail?.text, text.isEmpty != true {
         
                 if Util.validate(email: text) { //Email validated
-
-                    if self.validatePassword() { //Password validated
-                        
-                        if self.checkIfEmailAlreadyExists() {
+                    
+                    if self.checkPasswordField() {
+                    
+                        if self.validatePassword() { //Password validated
                             
-                            let alert = UIAlertController(title: "Error!",
-                                                      message: "The email already exists",
-                                                      preferredStyle: .alert)
+                            if self.checkIfEmailAlreadyExists() {
+                                
+                                let alert = UIAlertController(title: "Error!",
+                                                          message: "The email already exists",
+                                                          preferredStyle: .alert)
 
-                            alert.addAction(UIAlertAction(title: "Confirm",
-                                                      style: .default,
-                                                      handler: { action in
-                                                        self.txtEmail?.text = nil
-                                                        self.vwUnderlineEmailRegister?.backgroundColor = UIColor.red
+                                alert.addAction(UIAlertAction(title: "Confirm",
+                                                          style: .default,
+                                                          handler: { action in
+                                                            self.txtEmail?.text = nil
+                                                            self.vwUnderlineEmailRegister?.backgroundColor = UIColor.red
 
-                            }))
+                                }))
 
-                            self.present(alert, animated: true)
+                                self.present(alert, animated: true)
 
-                            if let fieldEmail = txtEmail {
-                                Util.tintPlaceholder(field: fieldEmail, color: .red)
+                                if let fieldEmail = txtEmail {
+                                    Util.tintPlaceholder(field: fieldEmail, color: .red)
+                                }
+                            }else{
+                            
+                            // register user
+                            
+                            let user: Dictionary<String, String> = [Constants.Key.userName : (self.txtName?.text)!,
+                                                                    Constants.Key.userEmail : (self.txtEmail?.text)!,
+                                                                    Constants.Key.userPassword : (self.txtPasswordOne?.text)!]
+                            
+                            PersistManager.set(data: user)
+                            
+                            registrationCompleteAlert()
                             }
-                        }else{
-                        
-                        // register user
-                        
-                        let user: Dictionary<String, String> = [Constants.Key.userName : (self.txtName?.text)!,
-                                                                Constants.Key.userEmail : (self.txtEmail?.text)!,
-                                                                Constants.Key.userPassword : (self.txtPasswordOne?.text)!]
-                        
-                        PersistManager.set(data: user)
-                        
-                        registrationCompleteAlert()
                         }
+                        
                     }
                 }else{  //Email invalid
                     
@@ -148,17 +153,9 @@ class RegisterViewController: UIViewController {
     
     private func registrationCompleteAlert() {
         
-        let alert = UIAlertController(title: "Registered Succefully",
-                                      message: "Check your email box to confirm the account",
-                                      preferredStyle: .alert)
+        Util.showMessage(text: "Succefully registrated!", type: .success)
         
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: { action in
-                                        self.dismiss(animated: true, completion: nil)
-        }))
-        
-        self.present(alert, animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 
     private func passwordAreNotTheSame() {
@@ -173,52 +170,29 @@ class RegisterViewController: UIViewController {
     
     private func passwordAreNotTheSameAlert(){
         
-        let alert = UIAlertController(title: "Error!",
-                                      message: "Passwords must be equals.",
-                                      preferredStyle: .alert)
+        Util.showMessage(text: "Password must be equals!", type: .warning)
         
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: { action in
-                                        self.vwUnderlinePasswordOne?.backgroundColor = UIColor.red
-                                        self.vwUnderlinePasswordTwo?.backgroundColor = UIColor.red
-                                        self.txtPasswordOne?.text = nil
-                                        self.txtPasswordTwo?.text = nil
-                                        self.txtPasswordOne?.becomeFirstResponder()
-        }))
-        
-        self.present(alert, animated: true)
+        self.vwUnderlinePasswordOne?.backgroundColor = UIColor.red
+        self.vwUnderlinePasswordTwo?.backgroundColor = UIColor.red
+        self.txtPasswordOne?.text = nil
+        self.txtPasswordTwo?.text = nil
+        self.txtPasswordOne?.becomeFirstResponder()
     }
     
     private func emailFieldIncorrectlyFilled(){
         
-        let alert = UIAlertController(title: "Error!",
-                                      message: "Fill the text field with a valid email.",
-                                      preferredStyle: .alert)
+        Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
         
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: { action in
-                                        self.txtEmail?.text = nil
-        }))
-        
-        self.present(alert, animated: true)
+        self.txtEmail?.text = nil
+
     }
     
     private func emailFieldIsEmpty() {
+
+        Util.showMessage(text: "Fill the text field with an email.", type: .warning)
         
-        let alert = UIAlertController(title: "Error!",
-                                      message: "Fill the text field with an email.",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: { action in
-                                        self.txtEmail?.text = nil
-        }))
-        
-        self.present(alert, animated: true)
-        
+        self.txtEmail?.text = nil
+
     }
     
     private func animateCloud() {
@@ -345,6 +319,18 @@ class RegisterViewController: UIViewController {
             self.passwordAreNotTheSameAlert()
             
             return false
+        }
+    }
+    
+    private func checkPasswordField() -> Bool {
+        
+        if self.txtPasswordOne?.text == "" {
+            
+            RKDropdownAlert.title(nil, message: "You need to fill the password field!", backgroundColor: UIColor.red, textColor: UIColor.white, time: 3)
+            
+            return false
+        }else{
+            return true
         }
     }
     

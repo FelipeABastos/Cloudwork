@@ -1,0 +1,6 @@
+framework module Pods_CloudWork {
+  umbrella header "Pods-CloudWork-umbrella.h"
+
+  export *
+  module * { export * }
+}

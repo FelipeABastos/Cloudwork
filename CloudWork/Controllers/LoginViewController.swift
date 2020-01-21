@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RKDropdownAlert
 
 class LoginViewController: UIViewController {
     
@@ -145,49 +146,21 @@ class LoginViewController: UIViewController {
     
     private func loginInvalid() {
         
+        Util.showMessage(text: "Your email or password are invalid.", type: .warning)
+        
         self.vwUnderlinePassword?.backgroundColor = UIColor.red
         self.vwUnderlineEmail?.backgroundColor = UIColor.red
-        
-        let alert = UIAlertController(title: "Error!",
-                                      message: "Your email or password are invalid.",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: nil))
-        
-        self.present(alert, animated: true)
-        
     }
+        
     
     private func emailFieldIncorrectlyFilled() {
         
-        self.vwUnderlineEmail?.backgroundColor = UIColor.red
-        
-        let alert = UIAlertController(title: "Error!",
-                                      message: "Fill the text field with a valid email.",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: nil))
-        
-        self.present(alert, animated: true)
+        Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
     }
     
     private func emailFieldIsEmpty() {
         
-        self.vwUnderlineEmail?.backgroundColor = UIColor.red
-        
-        let alert = UIAlertController(title: "Error!",
-                                      message: "Fill the text field with an email.",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: nil))
-        
-        self.present(alert, animated: true)
+        Util.showMessage(text: "Fill the text field with an email.", type: .warning)
         
     }
     
@@ -195,15 +168,7 @@ class LoginViewController: UIViewController {
         
         self.vwUnderlinePassword?.backgroundColor = UIColor.red
         
-        let alert = UIAlertController(title: "Error!",
-                                      message: "You need to put your password.",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Confirm",
-                                      style: .default,
-                                      handler: nil))
-        
-        self.present(alert, animated: true)
+        Util.showMessage(text: "You need to put your password.", type: .warning)
         
     }
     

@@ -1,0 +1,20 @@
+PODS:
+  - Kingfisher (4.10.1)
+  - RKDropdownAlert (0.3.0)
+
+DEPENDENCIES:
+  - Kingfisher
+  - RKDropdownAlert
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
+    - RKDropdownAlert
+
+SPEC CHECKSUMS:
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  RKDropdownAlert: f4b3364c251829ad439dc666836a1f2dad26f4c7
+
+PODFILE CHECKSUM: 68e9181854769d4822ad8b33332ce3d72a6addb9
+
+COCOAPODS: 1.8.4
