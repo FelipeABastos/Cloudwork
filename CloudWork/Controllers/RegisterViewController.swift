@@ -49,7 +49,6 @@ class RegisterViewController: UIViewController {
         self.configUI()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

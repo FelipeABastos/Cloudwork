@@ -132,7 +132,12 @@ class LoginViewController: UIViewController {
     private func showHome() {
 
         let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeView") as! HomeViewController
-        self.present(homeVC, animated: true, completion: nil)
+        
+        let navigationController = UINavigationController(rootViewController: homeVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.isNavigationBarHidden = true
+        
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     //---------------------------------------------------------------------------------------------
@@ -240,6 +245,6 @@ class LoginViewController: UIViewController {
     }
     
     private func stayLogged (){
-        defaults.set(true, forKey: Keys.authenticated)
+        defaults.set(true, forKey: Constants.Key.authenticated)
     }
 }

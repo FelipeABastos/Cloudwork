@@ -86,6 +86,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let post: Post = list[indexPath.row]
+        
+        let postDetail = self.storyboard?.instantiateViewController(identifier: "PostDetailView") as! PostDetailViewController
+        postDetail.post = post
+        self.present(postDetail, animated: true, completion: nil)
+        
+    }
+    
     //-----------------------------------------------------------------------
     //  MARK: - Custom Methods
     //-----------------------------------------------------------------------

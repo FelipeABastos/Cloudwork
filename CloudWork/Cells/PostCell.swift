@@ -27,8 +27,8 @@ class PostCell: UITableViewCell {
         self.lblText?.text = item.text
         self.lblAuthorName?.text = item.author.name
         self.lblTime?.text = item.time
-        self.lblLikes?.text = "\(item.likes ?? 0)"
-        self.lblComments?.text = "\(item.comments ?? 0)"
+        self.lblLikes?.text = "\(item.amountLikes ?? 0)"
+        self.lblComments?.text = "\(item.amountComments ?? 0)"
         self.lblTwitter?.text = item.author.twitter
         
         if let imageURL = item.imageURL {

@@ -16,5 +16,6 @@ struct Constants {
         static let userEmail = "user_email"
         static let userPassword = "user_password"
         static let userName = "user_name"
+        static let authenticated = "authenticated"
     }
 }
