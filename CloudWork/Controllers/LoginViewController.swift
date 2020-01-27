@@ -8,6 +8,7 @@
 
 import UIKit
 import RKDropdownAlert
+import Alamofire
 
 class LoginViewController: UIViewController {
     
@@ -109,26 +110,48 @@ class LoginViewController: UIViewController {
     
     private func makeLogin(email: String, password: String) {
         
-        let array = PersistManager.get()
-        
-        for user in array {
+        struct APIResponse: Codable {
             
-            if user[Constants.Key.userEmail] == email && user[Constants.Key.userPassword] == password {
-                
-                Session.set(data: user)
-                
-                self.showHome()
-                
-                return
-            }
+            var result: Bool!
+            var message: String!
         }
         
-        Util.showMessage(text: "Your email or password are invalid.", type: .warning)
-        
-        self.vwUnderlinePassword?.backgroundColor = UIColor.red
-        self.vwUnderlineEmail?.backgroundColor = UIColor.red
+        Alamofire.request("http://albertolourenco.com.br/cloudwork/?action=login",
+                          method: .post,
+                          parameters: ["email": email, "password": password],
+                          headers: nil).responseJSON { response in
+          
+                            switch response.result {
+                                case .success:
+                            
+                                    if let jsonData = response.data {
+                                        
+                                        do {
+                                            let apiAnswer = try JSONDecoder.init().decode(APIResponse.self, from: jsonData)
+                                            
+                                            if apiAnswer.result == true {
+                                            
+                                                self.showHome()
+                                                Util.showMessage(text: apiAnswer.message, type: .success)
+                                            }else{
+                                                Util.showMessage(text: apiAnswer.message, type: .warning)
+                                            }
+                                            
+                                        } catch {
+                                            print(error)
+                                            self.vwUnderlinePassword?.backgroundColor = UIColor.red
+                                            self.vwUnderlineEmail?.backgroundColor = UIColor.red
+                                        }
+                                    }
+
+                                    break
+                                case .failure:
+
+                                    break
+                            }
+                        }
     }
-    
+        
     private func showHome() {
 
         let homeVC = self.storyboard?.instantiateViewController(identifier: "HomeView") as! HomeViewController
