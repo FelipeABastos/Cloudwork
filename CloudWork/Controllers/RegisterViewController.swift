@@ -11,12 +11,19 @@ import RKDropdownAlert
 
 class RegisterViewController: UIViewController {
     
+    @IBOutlet var imageView: UIImageView!
+
+    var imagePicker: ImagePicker!
+    
     @IBOutlet var txtName: UITextField?
     @IBOutlet var txtEmail: UITextField?
     @IBOutlet var txtPasswordOne: UITextField?
     @IBOutlet var txtPasswordTwo: UITextField?
+    @IBOutlet var txtTwitter: UITextField?
     
-    @IBOutlet var lblInfo: UILabel?
+    @IBOutlet var btnAvatar: UIButton?
+    
+    @IBOutlet var svScrollView: UIScrollView?
     
     @IBOutlet var btnRegister: UIButton?
     
@@ -24,6 +31,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet var vwUnderlineEmailRegister: UIView?
     @IBOutlet var vwUnderlinePasswordOne: UIView?
     @IBOutlet var vwUnderlinePasswordTwo: UIView?
+    @IBOutlet var vwUnderlineTwitter: UIView?
     @IBOutlet var vwCloud: UIView?
     
     @IBOutlet var constraintAlignCenterInfo: NSLayoutConstraint?
@@ -36,6 +44,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet var constraintAlignCenterPasswordTwo: NSLayoutConstraint?
     @IBOutlet var constraintAlignCenterUnderlinePasswordTwo: NSLayoutConstraint?
     @IBOutlet var constraintAlignCenterRegisterButton: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterTwitter: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterUnderlineTwitter: NSLayoutConstraint?
+    @IBOutlet var constraintAlignCenterAvatar: NSLayoutConstraint?
     
     let defaults = UserDefaults.standard
     
@@ -46,15 +57,13 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
         self.configUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-    //---------------------------------------------------------------------------------------------
-    //  MARK: - Animations Requirements
-    //---------------------------------------------------------------------------------------------
         
         self.hideForms()
         
@@ -67,6 +76,8 @@ class RegisterViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.svScrollView?.contentSize = CGSize.init(width: UIScreen.main.bounds.width, height: 1200)
+        
         self.animateForms()
 
         self.showForms()
@@ -76,6 +87,10 @@ class RegisterViewController: UIViewController {
     //---------------------------------------------------------------------------------------------
     //  MARK: - Private Functions
     //---------------------------------------------------------------------------------------------
+    
+    @IBAction func showImagePicker(_ sender: UIButton) {
+        self.imagePicker.present(from: sender)
+    }
     
     @IBAction private func backToLogin() {
         
@@ -179,7 +194,7 @@ class RegisterViewController: UIViewController {
     
     private func hideForms(){
         
-        self.lblInfo?.alpha = 0
+        self.btnAvatar?.alpha = 0
         self.txtName?.alpha = 0
         self.vwUnderlineName?.alpha = 0
         self.txtEmail?.alpha = 0
@@ -189,11 +204,13 @@ class RegisterViewController: UIViewController {
         self.txtPasswordTwo?.alpha = 0
         self.btnRegister?.alpha = 0
         self.btnRegister?.alpha = 0
+        self.txtTwitter?.alpha = 0
+        self.vwUnderlineTwitter?.alpha = 0
     }
     
     private func showForms(){
         
-        UIView.animate(withDuration: 1.5, animations: {self.lblInfo?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.btnAvatar?.alpha = 1})
         UIView.animate(withDuration: 1.5, animations: {self.txtName?.alpha = 1})
         UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineName?.alpha = 1})
         UIView.animate(withDuration: 1.5, animations: {self.txtEmail?.alpha = 1})
@@ -203,11 +220,13 @@ class RegisterViewController: UIViewController {
         UIView.animate(withDuration: 1.5, animations: {self.txtPasswordTwo?.alpha = 1})
         UIView.animate(withDuration: 1.5, animations: {self.vwUnderlinePasswordTwo?.alpha = 1})
         UIView.animate(withDuration: 1.5, animations: {self.btnRegister?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.txtTwitter?.alpha = 1})
+        UIView.animate(withDuration: 1.5, animations: {self.vwUnderlineTwitter?.alpha = 1})
     }
     
     private func animateForms(){
         
-        constraintAlignCenterInfo?.constant = 0
+        constraintAlignCenterAvatar?.constant = 0
         
         UIView.animate(withDuration: 0.5) { [weak self] in
           self?.view.layoutIfNeeded()
@@ -232,12 +251,22 @@ class RegisterViewController: UIViewController {
                      animations: { [weak self] in
                       self?.view.layoutIfNeeded()
         }, completion: nil)
+        
+        constraintAlignCenterTwitter?.constant = 0
+        constraintAlignCenterUnderlineTwitter?.constant = 0
+        
+        UIView.animate(withDuration: 0.5,
+                     delay: 0.4,
+                     options: [],
+                     animations: { [weak self] in
+                      self?.view.layoutIfNeeded()
+        }, completion: nil)
 
         constraintAlignCenterPasswordOne?.constant = 0
         constraintAlignCenterUnderlinePasswordOne?.constant = 0
 
         UIView.animate(withDuration: 0.5,
-                     delay: 0.4,
+                     delay: 0.5,
                      options: [],
                      animations: { [weak self] in
                       self?.view.layoutIfNeeded()
@@ -247,7 +276,7 @@ class RegisterViewController: UIViewController {
         constraintAlignCenterUnderlinePasswordTwo?.constant = 0
         
         UIView.animate(withDuration: 0.5,
-                     delay: 0.5,
+                     delay: 0.6,
                      options: [],
                      animations: { [weak self] in
                       self?.view.layoutIfNeeded()
@@ -256,7 +285,7 @@ class RegisterViewController: UIViewController {
         constraintAlignCenterRegisterButton?.constant = 0
         
         UIView.animate(withDuration: 0.5,
-                     delay: 0.6,
+                     delay: 0.7,
                      options: [],
                      animations: { [weak self] in
                       self?.view.layoutIfNeeded()
@@ -265,7 +294,7 @@ class RegisterViewController: UIViewController {
     
     private func centerConstraints(){
        
-        constraintAlignCenterInfo?.constant -= view.bounds.width
+        constraintAlignCenterAvatar?.constant -= view.bounds.width
         constraintAlignCenterName?.constant -= view.bounds.width
         constraintAlignCenterUnderlineName?.constant -= view.bounds.width
         constraintAlignCenterEmail?.constant -= view.bounds.width
@@ -275,6 +304,8 @@ class RegisterViewController: UIViewController {
         constraintAlignCenterPasswordTwo?.constant -= view.bounds.width
         constraintAlignCenterUnderlinePasswordTwo?.constant -= view.bounds.width
         constraintAlignCenterRegisterButton?.constant -= view.bounds.width
+        constraintAlignCenterTwitter?.constant -= view.bounds.width
+        constraintAlignCenterUnderlineTwitter?.constant -= view.bounds.width
     }
     
     private func validatePassword() -> Bool {
@@ -336,6 +367,10 @@ class RegisterViewController: UIViewController {
             Util.tintPlaceholder(field: fieldEmail, color: .white)
         }
         
+        if let fieldTwitter = txtTwitter {
+            Util.tintPlaceholder(field: fieldTwitter, color: .white)
+        }
+        
         if let fieldPasswordOne = txtPasswordOne {
             Util.tintPlaceholder(field: fieldPasswordOne, color: .white)
         }
@@ -344,6 +379,14 @@ class RegisterViewController: UIViewController {
         }
     }
 }
+
+extension RegisterViewController: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        self.imageView.image = image
+    }
+}
+
 
 
 
