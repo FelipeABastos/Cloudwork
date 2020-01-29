@@ -41,23 +41,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Alamofire.request("http://albertolourenco.com.br/cloudwork/feed.php").responseJSON { response in
+        RequestManager.getPosts { (posts) in
             
-            if let jsonData = response.data {
-                
-                do{
-                    let items = try JSONDecoder().decode([Post].self, from: jsonData)
-                    self.list = items
-                    
-                    self.tbPosts.reloadData()
-                    UIView.animate(withDuration: 0.3) {
-                        self.tbPosts.alpha = 1
-                    }
-                }catch{
-                    print(error.localizedDescription)
-                }
+            self.list = posts
+            UIView.animate(withDuration: 1.5) {
+                self.tbPosts.alpha = 1
             }
+            self.tbPosts.reloadData()
         }
+        
     }
     
     //-----------------------------------------------------------------------
@@ -72,14 +64,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let post: Post = list[indexPath.row]
         
-        return (post.imageURL == nil) ? 200: 420
+        return (post.imageURL.isEmpty) ? 200: 420
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let post: Post = list[indexPath.row]
         
-        let identifier: String = (post.imageURL == nil) ? "PostCell_Text" : "PostCell_Image"
+        let identifier: String = (post.imageURL.isEmpty) ? "PostCell_Text" : "PostCell_Image"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! PostCell
         cell.loadUI(item: post)

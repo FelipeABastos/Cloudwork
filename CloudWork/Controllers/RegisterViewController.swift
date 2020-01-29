@@ -9,9 +9,9 @@
 import UIKit
 import RKDropdownAlert
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var imageAvatar: UIImageView!
 
     var imagePicker: ImagePicker!
     
@@ -97,66 +97,72 @@ class RegisterViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func registerButton() {
+    private func makeRegister(image: Data, name: String, email: String, twitter: String, password: String) {
         
-        if let text = self.txtEmail?.text, text.isEmpty != true {
-        
-                if Util.validate(email: text) { //Email validated
-                    
-                    if self.checkPasswordField() {
-                    
-                        if self.validatePassword() { //Password validated
-                            
-                            if self.checkIfEmailAlreadyExists() {
-                                
-                                let alert = UIAlertController(title: "Error!",
-                                                          message: "The email already exists",
-                                                          preferredStyle: .alert)
+        let parameters = ["name": name,
+                          "email": email,
+                          "twitter": twitter,
+                          "password": password] as [String : String]
 
-                                alert.addAction(UIAlertAction(title: "Confirm",
-                                                          style: .default,
-                                                          handler: { action in
-                                                            self.txtEmail?.text = nil
-                                                            self.vwUnderlineEmailRegister?.backgroundColor = UIColor.red
+        let URL = "http://albertolourenco.com.br/cloudwork/?action=userAdd"
 
-                                }))
-
-                                self.present(alert, animated: true)
-
-                                if let fieldEmail = txtEmail {
-                                    Util.tintPlaceholder(field: fieldEmail, color: .red)
-                                }
-                            }else{
-                            
-                            // register user
-                            
-                            let user: Dictionary<String, String> = [Constants.Key.userName : (self.txtName?.text)!,
-                                                                    Constants.Key.userEmail : (self.txtEmail?.text)!,
-                                                                    Constants.Key.userPassword : (self.txtPasswordOne?.text)!]
-                            
-                            PersistManager.set(data: user)
-                            
-                            Util.showMessage(text: "Succefully registrated!", type: .success)
-                            
-                            self.dismiss(animated: true, completion: nil)
-                            }
-                        }
-                        
-                    }
-                }else{  //Email invalid
-                    
-                    Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
-                    
-                    self.txtEmail?.text = nil
-                }
-                
-            }else{ //Field is Empty
-                
-                Util.showMessage(text: "Fill the text field with an email.", type: .warning)
-                
-                self.txtEmail?.text = nil
+        RequestManager.upload(endUrl: URL, imagedata: image, parameters: parameters) { (result) in
+            if result == true {
+                print("cadastrado com sucesso")
+            }else{
+                print("minha sipa")
             }
         }
+    }
+    
+    @IBAction private func registerButton() {
+        
+        guard let validatedName = txtName?.text, validatedName.isEmpty == false else {
+            Util.showMessage(text: "Fill the name field", type: .warning)
+            return
+        }
+
+        guard let validatedEmail = txtEmail?.text, validatedEmail.isEmpty == false else {
+            Util.showMessage(text: "fill the email field", type: .warning)
+            return
+        }
+        
+        guard let validatedTwitter = txtTwitter?.text, validatedTwitter.isEmpty == false else {
+            Util.showMessage(text: "Fill the twitter field", type: .warning)
+            return
+        }
+        
+        guard let validatedPassword = txtPasswordOne?.text, validatedPassword.isEmpty == false else {
+            Util.showMessage(text: "Fill the password field", type: .warning)
+            return
+        }
+        
+        guard let passwordConfirm = txtPasswordTwo?.text, passwordConfirm.isEmpty == false else {
+            Util.showMessage(text: "fill the password confirm", type: .warning)
+            return
+        }
+
+        if Util.validate(email: validatedEmail) == false {
+            Util.showMessage(text: "Fill the text field with a valid email.", type: .warning)
+            return
+        }
+        
+        if validatedPassword != passwordConfirm {
+            Util.showMessage(text: "The passwords must be equals", type: .warning)
+            return
+        }
+        
+        guard let avatar = imageAvatar.image else {
+            Util.showMessage(text: "You must select an image", type: .warning)
+            return
+        }
+        
+        self.makeRegister(image: avatar.jpegData(compressionQuality: 1)!,
+                          name: validatedName,
+                          email: validatedEmail,
+                          twitter: validatedTwitter,
+                          password: validatedPassword)
+    }
 
     private func passwordAreNotTheSame() {
         
@@ -334,20 +340,6 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    private func checkIfEmailAlreadyExists() -> Bool {
-
-        let array = PersistManager.get()
-
-        for item in array {
-
-            if item[Constants.Key.userEmail] == txtEmail?.text {
-
-                return true
-            }
-        }
-        return false
-    }
-    
     private func checkNameField() -> Bool {
         
         if txtName == nil {
@@ -378,14 +370,19 @@ class RegisterViewController: UIViewController {
             Util.tintPlaceholder(field: fieldPasswordTwo, color: .white)
         }
     }
+    
+    
+    
+    
 }
 
 extension RegisterViewController: ImagePickerDelegate {
 
     func didSelect(image: UIImage?) {
-        self.imageView.image = image
+        self.imageAvatar.image = image
     }
 }
+
 
 
 

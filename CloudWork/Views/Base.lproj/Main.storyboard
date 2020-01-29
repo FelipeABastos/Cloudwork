@@ -430,7 +430,7 @@ in your register.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4wt-LE-Auz">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="avatarImage" translatesAutoresizingMaskIntoConstraints="NO" id="4wt-LE-Auz">
                                         <rect key="frame" x="151.5" y="90" width="111" height="109"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="111" id="Lar-4i-PAQ"/>
@@ -516,7 +516,7 @@ in your register.</string>
                         <outlet property="constraintAlignCenterUnderlinePasswordOne" destination="h4s-cT-bFw" id="Sgr-Ma-S8N"/>
                         <outlet property="constraintAlignCenterUnderlinePasswordTwo" destination="lzW-34-C8e" id="R2p-Oz-KOl"/>
                         <outlet property="constraintAlignCenterUnderlineTwitter" destination="dk2-wU-XYT" id="Gaf-Ja-XPs"/>
-                        <outlet property="imageView" destination="4wt-LE-Auz" id="Vva-4V-ErR"/>
+                        <outlet property="imageAvatar" destination="4wt-LE-Auz" id="28G-n0-5SX"/>
                         <outlet property="svScrollView" destination="glG-2R-o3Y" id="lte-21-hlY"/>
                         <outlet property="txtEmail" destination="jbO-NW-VTk" id="IRy-9Z-mFX"/>
                         <outlet property="txtName" destination="ROf-Ed-5mr" id="lA1-9x-Wsk"/>

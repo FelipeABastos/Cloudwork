@@ -8,7 +8,6 @@
 
 import UIKit
 import RKDropdownAlert
-import Alamofire
 
 class LoginViewController: UIViewController {
     
@@ -42,6 +41,11 @@ class LoginViewController: UIViewController {
         if let fieldPassword = txtPassword {
             Util.tintPlaceholder(field: fieldPassword, color: .white)
         }
+        
+        #if DEBUG
+        self.txtEmail?.text = "felipe.bastos3357@gmail.com"
+        self.txtPassword?.text = "123456"
+        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,46 +114,20 @@ class LoginViewController: UIViewController {
     
     private func makeLogin(email: String, password: String) {
         
-        struct APIResponse: Codable {
-            
-            var result: Bool!
-            var message: String!
-        }
+        let parameters = ["email": email,
+                          "password": password] as [String : String]
         
-        Alamofire.request("http://albertolourenco.com.br/cloudwork/?action=login",
-                          method: .post,
-                          parameters: ["email": email, "password": password],
-                          headers: nil).responseJSON { response in
-          
-                            switch response.result {
-                                case .success:
-                            
-                                    if let jsonData = response.data {
-                                        
-                                        do {
-                                            let apiAnswer = try JSONDecoder.init().decode(APIResponse.self, from: jsonData)
-                                            
-                                            if apiAnswer.result == true {
-                                            
-                                                self.showHome()
-                                                Util.showMessage(text: apiAnswer.message, type: .success)
-                                            }else{
-                                                Util.showMessage(text: apiAnswer.message, type: .warning)
-                                            }
-                                            
-                                        } catch {
-                                            print(error)
-                                            self.vwUnderlinePassword?.backgroundColor = UIColor.red
-                                            self.vwUnderlineEmail?.backgroundColor = UIColor.red
-                                        }
-                                    }
-
-                                    break
-                                case .failure:
-
-                                    break
-                            }
-                        }
+        RequestManager.login(parameters: parameters) { (result) in
+            if result == true {
+                self.showHome()
+                Util.showMessage(text: "Successfully authenticated", type: .success)
+            }else{
+                self.vwUnderlineEmail?.backgroundColor = UIColor.red
+                self.vwUnderlinePassword?.backgroundColor = UIColor.red
+                
+                Util.showMessage(text: "User didn't found", type: .warning)
+            }
+        }
     }
         
     private func showHome() {

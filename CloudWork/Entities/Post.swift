@@ -12,7 +12,7 @@ struct Post: Codable {
     
     var id: Int!
     var text: String!
-    var imageURL: String?
+    var imageURL: String!
     var time: String!
     
     var amountLikes: Int!
@@ -21,6 +21,21 @@ struct Post: Codable {
     var author: Author!
     
     var comments: Array<Comment>!
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case id
+        case text = "content"
+        case imageURL
+        case time
+        
+        case amountLikes = "likes"
+        case amountComments = "comments"
+        case comments = "arrayComments"
+        
+        case author
+        
+    }
 }
 
 

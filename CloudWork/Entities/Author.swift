@@ -9,8 +9,8 @@
 import Foundation
 
 struct Author: Codable {
-    
-    var name: String!
+
+    var name: String?
     var pictureURL: String?
     var twitter: String?
 }
