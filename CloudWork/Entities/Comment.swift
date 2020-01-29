@@ -14,8 +14,14 @@ struct Comment: Codable {
     var text: String!
     var time: String!
     
-    var amountLikes: Int!
-    var aumontComments: Int!
-    
     var author: Author!
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case author
+        case text = "content"
+        case id
+        case time
+        
+    }
 }

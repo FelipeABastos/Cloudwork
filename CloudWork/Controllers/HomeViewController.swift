@@ -13,6 +13,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var list: Array<Post> = []
     
+    let refresh = UIRefreshControl()
+    
     @IBOutlet var tbPosts: UITableView!
     @IBOutlet var vwCloud: UIView?
     @IBOutlet var lblWelcomeMessage: UILabel?
@@ -23,6 +25,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refresh.addTarget(self, action: #selector(loadPosts), for: UIControl.Event.valueChanged)
+        self.tbPosts.addSubview(refresh)
         
         self.tbPosts.alpha = 0
         
@@ -41,14 +46,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        RequestManager.getPosts { (posts) in
-            
-            self.list = posts
-            UIView.animate(withDuration: 1.5) {
-                self.tbPosts.alpha = 1
-            }
-            self.tbPosts.reloadData()
-        }
+        self.loadPosts()
         
     }
     
@@ -91,6 +89,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //-----------------------------------------------------------------------
     //  MARK: - Custom Methods
     //-----------------------------------------------------------------------
+    
+    @objc private func loadPosts() {
+        
+        RequestManager.getPosts { (posts) in
+            
+            self.list = posts
+            UIView.animate(withDuration: 1.5) {
+                self.tbPosts.alpha = 1
+            }
+            self.tbPosts.reloadData()
+            self.refresh.endRefreshing()
+        }
+        
+    }
     
     private func animateCloud() {
         let options: UIView.AnimationOptions = [.curveEaseInOut,

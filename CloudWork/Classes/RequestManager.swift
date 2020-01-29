@@ -115,11 +115,10 @@ class RequestManager {
         }
     }
     
-    static func getPost(postId: Int, parameters: [String : String], completion: @escaping ( _ response: Post?) -> Void){
+    static func getPost(postId: Int, completion: @escaping ( _ response: Post?) -> Void){
         
             Alamofire.request("http://albertolourenco.com.br/cloudwork/?action=postDetail&post_id=\(postId)",
                               method: .get,
-                              parameters: parameters,
                               headers: nil).responseJSON { response in
                                 
                                 switch response.result {

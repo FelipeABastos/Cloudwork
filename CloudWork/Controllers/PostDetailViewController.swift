@@ -34,6 +34,9 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tbPosts.estimatedRowHeight = 44.0
+        self.tbPosts.rowHeight = UITableView.automaticDimension
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,27 +49,18 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Alamofire.request("http://albertolourenco.com.br/cloudwork/detail.php?id=\(post.id ?? 0)").responseJSON { response in
+        RequestManager.getPost(postId: post.id) { (post) in
             
-            if let jsonData = response.data {
-                
-                do{
-                    let object = try JSONDecoder().decode(Post.self, from: jsonData)
-                    self.post = object
-                    
-                    self.tbPosts.estimatedRowHeight = 44.0
-                    self.tbPosts.rowHeight = UITableView.automaticDimension
-                    
-                    self.tbPosts.reloadData()
-                    UIView.animate(withDuration: 0.3) {
-                        self.tbPosts.alpha = 1
-                    }
-                }catch{
-                    print(error.localizedDescription)
-                }
+            if let object = post {
+                self.post = object
+                self.list = object.comments
+            }
+            
+            self.tbPosts.reloadData()
+            UIView.animate(withDuration: 0.3) {
+                self.tbPosts.alpha = 1
             }
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
