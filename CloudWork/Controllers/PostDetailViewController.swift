@@ -16,6 +16,12 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet var tbPosts: UITableView!
     
+    @IBOutlet var txtInsertComment: UITextField?
+    @IBOutlet var vwCommentView: UIView?
+    @IBOutlet var vwCommentSpace: UIView?
+    
+    @IBOutlet var constraintAlignBottomCommentView: NSLayoutConstraint?
+    
     @IBOutlet var imgPicture: UIImageView?
     @IBOutlet var imgAuthorPicture: UIImageView?
     @IBOutlet var lblAuthorName: UILabel?
@@ -33,6 +39,26 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let commentField = txtInsertComment {
+            Util.tintPlaceholder(field: commentField, color: .darkGray)
+        }
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+        
+        
         
         self.tbPosts.estimatedRowHeight = 44.0
         self.tbPosts.rowHeight = UITableView.automaticDimension
@@ -98,6 +124,30 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     //-----------------------------------------------------------------------
     //    MARK: Custom methods
     //-----------------------------------------------------------------------
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            self.constraintAlignBottomCommentView?.constant = keyboardHeight
+            
+            UIView.animate(withDuration: 0.5,
+                         animations: { [weak self] in
+                          self?.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+            
+            self.constraintAlignBottomCommentView?.constant = 0
+            
+            UIView.animate(withDuration: 1,
+                         animations: { [weak self] in
+                          self?.view.layoutIfNeeded()
+            }, completion: nil)
+    }
     
     func loadUI(){
         

@@ -93,6 +93,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //  MARK: - Custom Methods
     //-----------------------------------------------------------------------
     
+    @IBAction func showAddPost() {
+        
+        let addPostVC = self.storyboard?.instantiateViewController(identifier: "AddPostView") as! AddPostViewController
+        
+        self.present(addPostVC, animated: true, completion: nil)
+    }
+    
     @objc private func loadPosts() {
         
         RequestManager.getPosts { (posts) in
