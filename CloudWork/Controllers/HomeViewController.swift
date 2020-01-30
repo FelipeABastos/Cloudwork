@@ -12,6 +12,9 @@ import Alamofire
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var list: Array<Post> = []
+    var post: Post!
+    var postCell: PostCell!
+    let isChecked = false
     
     let refresh = UIRefreshControl()
     

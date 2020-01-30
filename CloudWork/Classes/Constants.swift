@@ -17,5 +17,8 @@ struct Constants {
         static let userPassword = "user_password"
         static let userName = "user_name"
         static let authenticated = "authenticated"
+        static let userID = "user_id"
+        static let userTwitter = "user_twitter"
+        static let createdAt = "created_at"
     }
 }

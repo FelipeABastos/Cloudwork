@@ -27,6 +27,7 @@
 		55D4D62823CF950B004E1C8E /* PersistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D62723CF950B004E1C8E /* PersistManager.swift */; };
 		55DA186D23D763E300922653 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DA186C23D763E300922653 /* PostDetailViewController.swift */; };
 		55DA186F23D766E900922653 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DA186E23D766E900922653 /* CommentCell.swift */; };
+		55DA4DFF23E1F7A800C3BDAA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DA4DFE23E1F7A800C3BDAA /* User.swift */; };
 		55DF7B8623D256D9009E9F29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF7B8523D256D9009E9F29 /* Post.swift */; };
 		55DF7B8823D25766009E9F29 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF7B8723D25766009E9F29 /* Author.swift */; };
 		55E90CAA23D0BE9C00C81CC5 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E90CA923D0BE9C00C81CC5 /* PostCell.swift */; };
@@ -55,6 +56,7 @@
 		55D4D62723CF950B004E1C8E /* PersistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistManager.swift; sourceTree = "<group>"; };
 		55DA186C23D763E300922653 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		55DA186E23D766E900922653 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		55DA4DFE23E1F7A800C3BDAA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		55DF7B8523D256D9009E9F29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		55DF7B8723D25766009E9F29 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		55E90CA923D0BE9C00C81CC5 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				55DF7B8523D256D9009E9F29 /* Post.swift */,
 				55DF7B8723D25766009E9F29 /* Author.swift */,
 				553817F423D6A2F1009F264B /* Comment.swift */,
+				55DA4DFE23E1F7A800C3BDAA /* User.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				5574169F23DFC0F7001AE164 /* ImagePickerClass.swift in Sources */,
 				55D4D62423CF93BD004E1C8E /* Session.swift in Sources */,
 				5547450A23CA8B8500F28BCD /* LoginViewController.swift in Sources */,
+				55DA4DFF23E1F7A800C3BDAA /* User.swift in Sources */,
 				55AD4DF523CBC5FC0028562D /* HomeViewController.swift in Sources */,
 				5547450C23CA8DEE00F28BCD /* RegisterViewController.swift in Sources */,
 				553817F523D6A2F1009F264B /* Comment.swift in Sources */,

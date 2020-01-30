@@ -36,6 +36,7 @@ struct Post: Codable {
         case author
         
     }
+    
 }
 
 

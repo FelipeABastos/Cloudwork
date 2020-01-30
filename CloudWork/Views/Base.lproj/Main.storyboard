@@ -603,6 +603,9 @@ in your register.</string>
                                                                 <constraint firstAttribute="height" constant="19" id="jVI-TN-Msr"/>
                                                             </constraints>
                                                             <state key="normal" image="LikeButton"/>
+                                                            <connections>
+                                                                <action selector="addLike" destination="Scm-30-sIw" eventType="touchUpInside" id="4j4-Qo-hOe"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpN-eK-zKg">
                                                             <rect key="frame" x="38" y="367" width="10" height="20"/>
@@ -915,12 +918,12 @@ in your register.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMQ-L2-5xk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1776.8115942028987" y="-66.294642857142861"/>
+            <point key="canvasLocation" x="1772" y="-62"/>
         </scene>
         <!--Post Detail View Controller-->
         <scene sceneID="Yjx-HG-4In">
             <objects>
-                <viewController storyboardIdentifier="PostDetailView" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mtm-Fe-9yv" customClass="PostDetailViewController" customModule="CloudWork" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mtm-Fe-9yv" customClass="PostDetailViewController" customModule="CloudWork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RIO-vr-bjE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

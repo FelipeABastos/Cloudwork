@@ -59,29 +59,43 @@ class RequestManager {
                                   if let jsonData = response.data {
                                       
                                       do {
-                                          let apiAnswer = try JSONDecoder.init().decode(APIResponse.self, from: jsonData)
-                                          
-                                          if apiAnswer.result == true {
-                                            completion(true)
-                                              
-                                              Util.showMessage(text: apiAnswer.message, type: .success)
-                                          }else{
-                                            completion(false)
-                                              Util.showMessage(text: apiAnswer.message, type: .warning)
-                                          }
-                                          
+                                        
+                                        let apiAnswer = try JSONDecoder.init().decode(User.self, from: jsonData)
+                                        
+                                        let userInfo: [String: String] = [Constants.Key.userName: apiAnswer.name,
+                                                                          Constants.Key.userEmail: apiAnswer.email,
+                                                                          Constants.Key.userTwitter : apiAnswer.twitter,
+                                                                          Constants.Key.createdAt : apiAnswer.createdAt,
+                                                                          Constants.Key.userID : "\(apiAnswer.id)"]
+                                        
+                                        Session.set(data: userInfo)
+                                        
+                                        completion(true)
                                       } catch {
-                                        completion(false)
-                                          print(error)
-                                          
-                                      }
-                                  }
 
-                                  break
-                              case .failure:
+                                        do {
+                                              let apiAnswer = try JSONDecoder.init().decode(APIResponse.self, from: jsonData)
+        
+                                              if apiAnswer.result == true {
+                                                completion(true)
+                                                Util.showMessage(text: apiAnswer.message, type: .success)
+                                              }else{
+                                                completion(false)
+                                                  Util.showMessage(text: apiAnswer.message, type: .warning)
+                                              }
+                                            completion(false)
+        
+                                          } catch {
+                                            completion(false)
+                                          }
+                                      }
+                                    break
+                                  }
+                            
+                            case .failure:
                                 completion(false)
-                                  break
-                          }
+                            break
+                            }
                       }
         
     }
@@ -144,6 +158,43 @@ class RequestManager {
             }
     }
     
+    static func like(postID: Int,completion: @escaping ( _ response: Bool) -> Void){
+        
+        Alamofire.request("http://albertolourenco.com.br/cloudwork/?action=like",
+                          method: .post,
+                          parameters: ["id_post" : postID],
+                          headers: nil).responseJSON { response in
+        
+                          switch response.result {
+                              case .success:
+                          
+                                  if let jsonData = response.data {
+                                      
+                                      do {
+                                        
+                                        let apiAnswer = try JSONDecoder.init().decode(APIResponse.self, from: jsonData)
+                                        
+                                        if apiAnswer.result == true {
+                                            
+                                            Util.showMessage(text: apiAnswer.message, type: .success)
+                                            completion(true)
+                                        }else{
+                                            completion(false)
+                                        }
+                                      } catch {
+                                        completion(false)
+                                      }
+                                    break
+                                  }
+                            
+                            case .failure:
+                                completion(false)
+                            break
+                            }
+                      }
+    }
+    
 }
+
 
 

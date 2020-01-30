@@ -11,6 +11,8 @@ import Kingfisher
 
 class PostCell: UITableViewCell {
     
+    var post: Post!
+    
     @IBOutlet var imgPicture: UIImageView?
     @IBOutlet var imgAuthorPicture: UIImageView?
     @IBOutlet var lblAuthorName: UILabel?
@@ -23,6 +25,8 @@ class PostCell: UITableViewCell {
     @IBOutlet var lblTwitter: UILabel?
     
     func loadUI(item: Post) {
+        
+        self.post = item
         
         self.lblText?.text = item.text
         self.lblAuthorName?.text = item.author.name
@@ -37,6 +41,18 @@ class PostCell: UITableViewCell {
         
         if let imageURL = item.author.pictureURL {
             self.imgAuthorPicture?.kf.setImage(with: URL.init(string: imageURL))
+        }
+    }
+    
+    @IBAction func addLike() {
+        
+        RequestManager.like(postID: post.id) { (result) in
+            if result == true {
+                self.btnLike?.setImage(#imageLiteral(resourceName: "LikedImage"), for: .normal)
+                self.post.amountLikes = self.post.amountLikes + 1
+            }else{
+                return
+            }
         }
     }
 }

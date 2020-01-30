@@ -119,6 +119,7 @@ class LoginViewController: UIViewController {
         
         RequestManager.login(parameters: parameters) { (result) in
             if result == true {
+                
                 self.showHome()
                 Util.showMessage(text: "Successfully authenticated", type: .success)
             }else{
