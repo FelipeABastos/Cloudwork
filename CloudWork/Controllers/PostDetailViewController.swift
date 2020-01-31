@@ -125,6 +125,46 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     //    MARK: Custom methods
     //-----------------------------------------------------------------------
     
+    @IBAction func addLike() {
+        
+        RequestManager.like(postID: post.id) { (result) in
+            if result == true {
+                self.btnLike?.setImage(#imageLiteral(resourceName: "LikedImage"), for: .normal)
+                self.post.amountLikes = self.post.amountLikes + 1
+            }else{
+                return
+            }
+        }
+    }
+    
+    @IBAction func addComment() {
+        
+        if let user = Session.get(), let userID = user[Constants.Key.userID], let postID = post.id {
+            
+            addCommentAPI(userID: userID,
+                          postID: String(postID),
+                          text: txtInsertComment?.text ?? "")
+        }
+        
+        txtInsertComment?.text = ""
+        self.view.endEditing(true)
+    }
+    
+    private func addCommentAPI(userID: String, postID: String, text: String) {
+        
+        let parameters = ["id_user" : userID,
+                          "id_post" : postID,
+                          "text" : text] as [String : String]
+        
+        RequestManager.postComment(parameters: parameters) { (result) in
+            if result == true{
+                print("Comentado")
+            }else{
+                print("fail")
+            }
+        }
+    }
+    
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue

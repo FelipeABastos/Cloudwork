@@ -26,7 +26,7 @@ class RequestManager {
             }
 
             if let data = imagedata{
-                multipartFormData.append(data, withName: "imagename", fileName: "imagename.jpg", mimeType: "image/jpeg")
+                multipartFormData.append(data, withName: "imageFile", fileName: "imagename.jpg", mimeType: "image/jpeg")
             }
 
         }, to:url,headers: headers)
@@ -194,6 +194,40 @@ class RequestManager {
                       }
     }
     
+    static func postComment(parameters: [String : String],completion: @escaping ( _ response: Bool) -> Void){
+        
+        Alamofire.request("http://albertolourenco.com.br/cloudwork/?action=commentAdd",
+                          method: .post,
+                          parameters: parameters,
+                          headers: nil).responseJSON { response in
+        
+                          switch response.result {
+                              case .success:
+                          
+                                  if let jsonData = response.data {
+                                      
+                                      do {
+                                        
+                                        let apiAnswer = try JSONDecoder.init().decode(APIResponse.self, from: jsonData)
+                                        
+                                        if apiAnswer.result == true {
+                                            
+                                            completion(true)
+                                        }else{
+                                            completion(false)
+                                        }
+                                      } catch {
+                                        completion(false)
+                                      }
+                                    break
+                                  }
+                            
+                            case .failure:
+                                completion(false)
+                            break
+                            }
+                      }
+    }
 }
 
 

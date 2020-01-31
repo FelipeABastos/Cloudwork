@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="67a-vH-YZk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -747,6 +747,9 @@ in your register.</string>
                                                                 <constraint firstAttribute="height" constant="19" id="Xlo-3N-yFd"/>
                                                             </constraints>
                                                             <state key="normal" image="LikeButton"/>
+                                                            <connections>
+                                                                <action selector="addLike" destination="mGz-7Q-pDn" eventType="touchUpInside" id="7hu-eA-nxN"/>
+                                                            </connections>
                                                         </button>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CommentButton" translatesAutoresizingMaskIntoConstraints="NO" id="ROc-bF-xT1">
                                                             <rect key="frame" x="63" y="139" width="19" height="19"/>
@@ -991,6 +994,9 @@ in your register.</string>
                                                 <constraint firstAttribute="height" constant="20" id="yeK-Hl-UFL"/>
                                             </constraints>
                                             <state key="normal" image="IconLike"/>
+                                            <connections>
+                                                <action selector="addLike" destination="Mtm-Fe-9yv" eventType="touchUpInside" id="kcS-cu-ayK"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J15-ti-dRQ">
                                             <rect key="frame" x="39" y="353" width="11" height="21"/>
@@ -1179,6 +1185,7 @@ in your register.</string>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="317" id="eMc-OJ-WM9"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -1197,17 +1204,20 @@ in your register.</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sendButton" translatesAutoresizingMaskIntoConstraints="NO" id="u0L-h9-GUw">
-                                        <rect key="frame" x="367" y="-14" width="32" height="60"/>
-                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMv-GK-e2f">
+                                        <rect key="frame" x="366" y="15" width="32" height="30"/>
+                                        <state key="normal" image="sendButton"/>
+                                        <connections>
+                                            <action selector="addComment" destination="Mtm-Fe-9yv" eventType="touchUpInside" id="Tnh-z1-5fn"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21429216861724854" green="0.24067136645317078" blue="0.25601044297218323" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="u0L-h9-GUw" firstAttribute="leading" secondItem="fpY-lZ-ZVt" secondAttribute="trailing" constant="15" id="GkR-lb-s2J"/>
-                                    <constraint firstAttribute="trailing" secondItem="u0L-h9-GUw" secondAttribute="trailing" constant="15" id="Hk1-Qq-Pcm"/>
+                                    <constraint firstAttribute="trailing" secondItem="TMv-GK-e2f" secondAttribute="trailing" constant="16" id="1Ag-Pu-WaU"/>
                                     <constraint firstAttribute="width" constant="414" id="Xj6-sy-wja"/>
                                     <constraint firstAttribute="height" constant="66" id="ezb-gJ-21Y"/>
-                                    <constraint firstAttribute="bottom" secondItem="u0L-h9-GUw" secondAttribute="bottom" constant="20" id="n2h-tI-Es9"/>
+                                    <constraint firstAttribute="bottom" secondItem="TMv-GK-e2f" secondAttribute="bottom" constant="21" id="hNX-Pr-Tzx"/>
                                     <constraint firstItem="fpY-lZ-ZVt" firstAttribute="top" secondItem="JaB-Va-zVW" secondAttribute="top" constant="10" id="nEf-5e-Zeg"/>
                                     <constraint firstAttribute="bottom" secondItem="fpY-lZ-ZVt" secondAttribute="bottom" constant="15" id="pzU-SB-4Xm"/>
                                     <constraint firstItem="fpY-lZ-ZVt" firstAttribute="leading" secondItem="JaB-Va-zVW" secondAttribute="leading" constant="15" id="xZb-ij-tJn"/>
@@ -1274,12 +1284,12 @@ in your register.</string>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="VZn-Xp-wWK" customClass="SZTextView">
                                         <rect key="frame" x="8" y="8" width="358" height="214"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.98999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="358" id="Da5-Ns-M0f"/>
                                             <constraint firstAttribute="height" constant="214" id="Go2-CO-UF6"/>
                                         </constraints>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
@@ -1290,7 +1300,7 @@ in your register.</string>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="VZn-Xp-wWK" firstAttribute="leading" secondItem="i6r-gV-gCA" secondAttribute="leading" constant="8" id="1X5-Qd-LQf"/>
                                     <constraint firstAttribute="height" constant="230" id="E1L-Mb-sae"/>
@@ -1345,7 +1355,7 @@ in your register.</string>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eIW-YI-DXS" secondAttribute="trailing" id="4hv-sE-HiO"/>
                                     <constraint firstAttribute="trailing" secondItem="x9Z-Sz-5gQ" secondAttribute="trailing" constant="18" id="9VX-h8-H3H"/>
@@ -1395,6 +1405,9 @@ in your register.</string>
                                         <size key="value" width="1" height="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addPost" destination="e05-fu-252" eventType="touchUpInside" id="Fr8-Qx-Vfi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfk-cA-d7C">
                                 <rect key="frame" x="20" y="44" width="23" height="22"/>

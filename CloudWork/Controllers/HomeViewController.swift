@@ -39,8 +39,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let userName = Session.get(){
-            lblWelcomeMessage?.text = "Hello, " + userName[Constants.Key.userName]!
+        if let user = Session.get(){
+            lblWelcomeMessage?.text = "Hello, " + user[Constants.Key.userName]!
         }
         
         animateCloud()

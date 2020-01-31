@@ -34,7 +34,6 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet var vwUnderlineTwitter: UIView?
     @IBOutlet var vwCloud: UIView?
     
-    @IBOutlet var constraintAlignCenterInfo: NSLayoutConstraint?
     @IBOutlet var constraintAlignCenterName: NSLayoutConstraint?
     @IBOutlet var constraintAlignCenterUnderlineName: NSLayoutConstraint?
     @IBOutlet var constraintAlignCenterEmail: NSLayoutConstraint?
@@ -110,7 +109,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             if result == true {
                 print("cadastrado com sucesso")
             }else{
-                print("minha sipa")
+                print("nope")
             }
         }
     }
@@ -370,9 +369,6 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             Util.tintPlaceholder(field: fieldPasswordTwo, color: .white)
         }
     }
-    
-    
-    
     
 }
 

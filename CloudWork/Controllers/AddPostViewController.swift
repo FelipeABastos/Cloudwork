@@ -16,6 +16,9 @@ class AddPostViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet var imgImagePicked: UIImageView?
     @IBOutlet var txtPost: UITextView?
     
+    var api: APIResponse!
+    var user: User!
+    
     var imagePicker: ImagePicker!
     
     //-----------------------------------------------------------------------
@@ -54,6 +57,34 @@ class AddPostViewController: UIViewController, UIImagePickerControllerDelegate, 
     //-----------------------------------------------------------------------
     //    MARK: Custom methods
     //-----------------------------------------------------------------------
+    
+    @IBAction private func addPost() {
+        
+        if let user = Session.get(), let userID = user[Constants.Key.userID]{
+            
+            addPostAPI(image: imgImagePicked?.image?.jpegData(compressionQuality: 1),
+                       userId: userID,
+                       text: txtPost?.text ?? "")
+        }
+    }
+    
+    private func addPostAPI(image: Data?, userId: String, text: String) {
+        
+        let parameters = ["id_user" : userId,
+                          "text" : text] as [String : String]
+        
+        let URL = "http://albertolourenco.com.br/cloudwork/?action=postAdd"
+        
+        RequestManager.upload(endUrl: URL, imagedata: image, parameters: parameters) { (result) in
+            if result == true {
+                
+                Util.showMessage(text: "Posted successfully", type: .success)
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                Util.showMessage(text: "Error", type: .error)
+            }
+        }
+    }
     
     @IBAction func backToHome() {
         self.dismiss(animated: true, completion: nil)
