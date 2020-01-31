@@ -41,11 +41,6 @@ class LoginViewController: UIViewController {
         if let fieldPassword = txtPassword {
             Util.tintPlaceholder(field: fieldPassword, color: .white)
         }
-        
-        #if DEBUG
-        self.txtEmail?.text = "felipe.bastos3357@gmail.com"
-        self.txtPassword?.text = "123456"
-        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
