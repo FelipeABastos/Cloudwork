@@ -20,6 +20,8 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var vwCommentView: UIView?
     @IBOutlet var vwCommentSpace: UIView?
     
+    let refresh = UIRefreshControl()
+    
     @IBOutlet var constraintAlignBottomCommentView: NSLayoutConstraint?
     
     @IBOutlet var imgPicture: UIImageView?
@@ -130,7 +132,10 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         RequestManager.like(postID: post.id) { (result) in
             if result == true {
                 self.btnLike?.setImage(#imageLiteral(resourceName: "LikedImage"), for: .normal)
-                self.post.amountLikes = self.post.amountLikes + 1
+                var like = self.post.amountLikes
+                like = self.post.amountLikes + 1
+                self.lblLikes?.text = "\(like ?? 0)"
+                
             }else{
                 return
             }
@@ -148,9 +153,23 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         txtInsertComment?.text = ""
         self.view.endEditing(true)
+        
+        RequestManager.getPost(postId: post.id) { (post) in
+            
+            if let object = post {
+                self.post = object
+                self.list = object.comments
+            }
+            
+            self.tbPosts.reloadData()
+            UIView.animate(withDuration: 0.3) {
+                self.tbPosts.alpha = 1
+            }
+        }
+        
     }
     
-    private func addCommentAPI(userID: String, postID: String, text: String) {
+    @objc private func addCommentAPI(userID: String, postID: String, text: String) {
         
         let parameters = ["id_user" : userID,
                           "id_post" : postID,

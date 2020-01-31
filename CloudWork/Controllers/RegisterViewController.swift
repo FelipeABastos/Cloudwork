@@ -108,6 +108,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         RequestManager.upload(endUrl: URL, imagedata: image, parameters: parameters) { (result) in
             if result == true {
                 Util.showMessage(text: "Successfully registered", type: .success)
+                self.btnRegister?.isEnabled = false
                 self.dismiss(animated: true, completion: nil)
             }else{
                 Util.showMessage(text: "Error", type: .error)
