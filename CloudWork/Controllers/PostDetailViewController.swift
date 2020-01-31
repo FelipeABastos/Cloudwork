@@ -132,6 +132,8 @@ class PostDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         RequestManager.like(postID: post.id) { (result) in
             if result == true {
                 self.btnLike?.setImage(#imageLiteral(resourceName: "LikedImage"), for: .normal)
+                
+                self.post.amountLikes = self.post.amountLikes + 1
                 var like = self.post.amountLikes
                 like = self.post.amountLikes + 1
                 self.lblLikes?.text = "\(like ?? 0)"

@@ -21,6 +21,8 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet var txtPasswordTwo: UITextField?
     @IBOutlet var txtTwitter: UITextField?
     
+    
+    
     @IBOutlet var btnAvatar: UIButton?
     
     @IBOutlet var svScrollView: UIScrollView?
@@ -100,7 +102,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         
         let parameters = ["name": name,
                           "email": email,
-                          "twitter": twitter,
+                          "twitter": "@\(twitter)",
                           "password": password] as [String : String]
 
         let URL = "http://albertolourenco.com.br/cloudwork/?action=userAdd"
@@ -158,10 +160,12 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             return
         }
         
+        let twitter = validatedTwitter.replacingOccurrences(of: "@", with: "")
+        
         self.makeRegister(image: avatar.jpegData(compressionQuality: 1)!,
                           name: validatedName,
                           email: validatedEmail,
-                          twitter: validatedTwitter,
+                          twitter: twitter,
                           password: validatedPassword)
     }
 

@@ -1,6 +1,8 @@
 PODS:
   - Alamofire (4.9.1)
-  - Kingfisher (4.10.1)
+  - Kingfisher (5.13.0):
+    - Kingfisher/Core (= 5.13.0)
+  - Kingfisher/Core (5.13.0)
   - RKDropdownAlert (0.3.0)
   - SZTextView (1.3.0)
 
@@ -19,10 +21,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   RKDropdownAlert: f4b3364c251829ad439dc666836a1f2dad26f4c7
   SZTextView: 094dc6acc9beec537685c545d6e3e0d4975174e1
 
-PODFILE CHECKSUM: 09ccaa1cf665317e22e603cccc53ab95817e63c1
+PODFILE CHECKSUM: db7cb9bcdefdb49dc267f37e48ba1a7749752ccd
 
 COCOAPODS: 1.8.4

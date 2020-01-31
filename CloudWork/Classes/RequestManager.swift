@@ -176,7 +176,6 @@ class RequestManager {
                                         
                                         if apiAnswer.result == true {
                                             
-                                            Util.showMessage(text: apiAnswer.message, type: .success)
                                             completion(true)
                                         }else{
                                             completion(false)
