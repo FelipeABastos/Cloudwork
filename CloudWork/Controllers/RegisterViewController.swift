@@ -107,9 +107,10 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
 
         RequestManager.upload(endUrl: URL, imagedata: image, parameters: parameters) { (result) in
             if result == true {
-                print("cadastrado com sucesso")
+                Util.showMessage(text: "Successfully registered", type: .success)
+                self.dismiss(animated: true, completion: nil)
             }else{
-                print("nope")
+                Util.showMessage(text: "Error", type: .error)
             }
         }
     }
