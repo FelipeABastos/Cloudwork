@@ -42,8 +42,12 @@ The app uses an API developed with PHP and MySQL
 ## App working
 <img align="left" width="270" height="540" src="https://github.com/FelipeABastos/Cloudwork/blob/master/GifRegisterForgotPassword.gif"> 
 
-<img align="right" width="270" height="540" 
+<img align="center" width="270" height="540" 
 src="https://github.com/FelipeABastos/Cloudwork/blob/master/OficialCloudwork.gif"> 
+
+<img align="center" width="270" height="540" 
+src="https://github.com/FelipeABastos/Cloudwork/blob/master/CloudworkPost.gif"> 
+
 
 
 
