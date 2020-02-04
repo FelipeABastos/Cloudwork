@@ -11,6 +11,17 @@ Swift 5
 UIKit
 ```
 
+## This class uses:
+
+```
+UITableView
+UIScrollView
+UIAnimate
+UserDefaults
+RequestManager
+ImagePicker
+```
+
 ## API
 
 ```
