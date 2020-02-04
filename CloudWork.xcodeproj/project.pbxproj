@@ -33,6 +33,7 @@
 		55DF7B8623D256D9009E9F29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF7B8523D256D9009E9F29 /* Post.swift */; };
 		55DF7B8823D25766009E9F29 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF7B8723D25766009E9F29 /* Author.swift */; };
 		55E90CAA23D0BE9C00C81CC5 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E90CA923D0BE9C00C81CC5 /* PostCell.swift */; };
+		55FEB7AF23E91E2A00883188 /* animated.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55FEB7AE23E91E2A00883188 /* animated.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		55DF7B8523D256D9009E9F29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		55DF7B8723D25766009E9F29 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		55E90CA923D0BE9C00C81CC5 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		55FEB7AE23E91E2A00883188 /* animated.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = animated.gif; path = ../../../../../Desktop/animated.gif; sourceTree = "<group>"; };
 		BD1584B4356FC64D95A971A5 /* Pods-CloudWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudWork.release.xcconfig"; path = "Target Support Files/Pods-CloudWork/Pods-CloudWork.release.xcconfig"; sourceTree = "<group>"; };
 		BDD40634044ACD04EC660584 /* Pods-CloudWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CloudWork.debug.xcconfig"; path = "Target Support Files/Pods-CloudWork/Pods-CloudWork.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 		554744F223CA578A00F28BCD /* CloudWork */ = {
 			isa = PBXGroup;
 			children = (
+				55FEB7AD23E90F8E00883188 /* Gifs */,
 				55AD4DF923CBC6460028562D /* Application */,
 				55DF7B8A23D25869009E9F29 /* Cells */,
 				55DF7B8423D256C2009E9F29 /* Entities */,
@@ -188,6 +191,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		55FEB7AD23E90F8E00883188 /* Gifs */ = {
+			isa = PBXGroup;
+			children = (
+				55FEB7AE23E91E2A00883188 /* animated.gif */,
+			);
+			path = Gifs;
+			sourceTree = "<group>";
+		};
 		8DE98246604EEE8AC08E709D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +270,7 @@
 				5547450023CA578B00F28BCD /* LaunchScreen.storyboard in Resources */,
 				554744FD23CA578B00F28BCD /* Assets.xcassets in Resources */,
 				554744FB23CA578A00F28BCD /* Main.storyboard in Resources */,
+				55FEB7AF23E91E2A00883188 /* animated.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

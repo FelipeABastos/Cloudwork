@@ -30,6 +30,4 @@ class CommentCell: UITableViewCell {
         
         self.layoutIfNeeded()
     }
-    
-    
 }

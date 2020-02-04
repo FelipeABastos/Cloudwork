@@ -3,4 +3,54 @@
    uuid = "4C02AE3C-EE33-46E5-81C3-6D1EE29E8D09"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8AD89DCE-9119-47FE-8AF1-5BC49F8A077C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CloudWork/Entities/APIResponse.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "APIResponse"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "8AD89DCE-9119-47FE-8AF1-5BC49F8A077C - 4fb95c09618208df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CloudWork.APIResponse.init(result: Swift.Optional&lt;Swift.Bool&gt;, message: Swift.Optional&lt;Swift.String&gt;) -&gt; CloudWork.APIResponse"
+                  moduleName = "CloudWork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Documents/Projetos/CloudWork/CloudWork/Entities/APIResponse.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "11">
+               </Location>
+               <Location
+                  uuid = "8AD89DCE-9119-47FE-8AF1-5BC49F8A077C - 44aea0ef3a0560c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CloudWork.APIResponse.init() -&gt; CloudWork.APIResponse"
+                  moduleName = "CloudWork"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Documents/Projetos/CloudWork/CloudWork/Entities/APIResponse.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -97,7 +97,6 @@ class RequestManager {
                             break
                             }
                       }
-        
     }
     
     static func getPosts(completion: @escaping ( _ response: Array<Post>) -> Void){

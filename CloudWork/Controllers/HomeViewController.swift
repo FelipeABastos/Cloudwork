@@ -111,7 +111,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tbPosts.reloadData()
             self.refresh.endRefreshing()
         }
-        
     }
     
     private func animateCloud() {
