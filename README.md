@@ -1,6 +1,6 @@
 # Cloudwork
 
-Cloudwork is a basic project that I made for improve my iOS skills.
+Cloudwork is a basic project that I made for improve my iOS skills. My objective to put the app on the GitHub, is to show my abalities as a student of iOS development and maybe help someone with an app idea, I hope you enjoy the app :)
 
 ## Requirements
 
