@@ -3,7 +3,7 @@
 Cloudwork is a basic project that I made for improve my iOS skills.
 
 ## App working
-<img align="center" width="300" height="500" src="https://github.com/FelipeABastos/Cloudwork/blob/master/GifRegisterForgotPassword.gif">
+<img align="center" width="260" height="480" src="https://github.com/FelipeABastos/Cloudwork/blob/master/GifRegisterForgotPassword.gif">
 
 ![ApplicationGif](https://github.com/FelipeABastos/Cloudwork/blob/master/gifApplication.gif)
 
