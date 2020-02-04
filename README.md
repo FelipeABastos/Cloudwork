@@ -24,14 +24,16 @@ The app uses an API developed with PHP and MySQL
 * RKDropdownAlert
 * SZTextView
 
-## App working
-<img align="center" width="270" height="540" src="https://github.com/FelipeABastos/Cloudwork/blob/master/GifRegisterForgotPassword.gif"> 
-
-<img align="center" width="270" height="540" 
-src="https://github.com/FelipeABastos/Cloudwork/blob/master/gifApplication.gif"> 
-
 ## Authors
 
 * **Felipe Bastos** 
+
+## App working
+<img align="left" width="270" height="540" src="https://github.com/FelipeABastos/Cloudwork/blob/master/GifRegisterForgotPassword.gif"> 
+
+<img align="right" width="270" height="540" 
+src="https://github.com/FelipeABastos/Cloudwork/blob/master/gifApplication.gif"> 
+
+
 
 
