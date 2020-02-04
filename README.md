@@ -3,7 +3,8 @@
 Cloudwork is a basic project that I made for improve my iOS skills.
 
 ## App working
-![ApplicationGid](https://github.com/FelipeABastos/Cloudwork/blob/master/gifApplication.gif)
+![ApplicationGif](https://github.com/FelipeABastos/Cloudwork/blob/master/GifRegisterForgotPassword.gif)
+![ApplicationGif](https://github.com/FelipeABastos/Cloudwork/blob/master/gifApplication.gif)
 
 ## Requirements
 
