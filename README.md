@@ -40,13 +40,13 @@ The app uses an API developed with PHP and MySQL
 * **Felipe Bastos** 
 
 ## App working
-<img align="left" width="270" height="540" src="https://github.com/FelipeABastos/Cloudwork/blob/master/GifRegisterForgotPassword.gif"> 
+<img align="left" width="270" height="540" src="https://github.com/FelipeABastos/Cloudwork/blob/master/CloudWorkRegisterOficial.gif"> 
 
 <img align="center" width="270" height="540" 
-src="https://github.com/FelipeABastos/Cloudwork/blob/master/OficialCloudwork.gif"> 
+src="https://github.com/FelipeABastos/Cloudwork/blob/master/HomePresentOficial.gif"> 
 
 <img align="center" width="270" height="540" 
-src="https://github.com/FelipeABastos/Cloudwork/blob/master/CloudworkPost.gif"> 
+src="https://github.com/FelipeABastos/Cloudwork/blob/master/CloudWorkPostOficial.gif"> 
 
 
 
