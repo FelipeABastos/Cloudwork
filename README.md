@@ -2,7 +2,7 @@
 
 Cloudwork is a basic project that I made for improve my iOS skills.
 
-## Project working
+## App working
 
 ![ApplicationGid](https://github.com/FelipeABastos/Cloudwork/blob/master/gifApplication.gif)
 
